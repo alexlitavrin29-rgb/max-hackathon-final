@@ -1,0 +1,457 @@
+{
+  "schema_version": 2,
+  "status": "DEVELOPMENT_NOT_HOLDOUT",
+  "editor": "owner",
+  "notes": [
+    "Owner questions and implementation-visible paraphrases, not independent test evidence.",
+    "Oracle material IDs probe ideal assembly; alternate relevant model selections need editor review.",
+    "Employment card is partial; do not demand undocumented universal documents.",
+    "Links to searches in the INITIAL answer are newly requested; missing links are genuine product gaps, not a reason to relax checks.",
+    "v1 dev05 remains an explicit historical content gap. v2 requires the newly added work_wages guide and its official sources; job_contract alone remains insufficient.",
+    "v1 preserved unchanged. v2 only replaces known missing-content wage case with explicit source-checked guide; conditions are strengthened with concrete facts and official URLs. No model accuracy claim."
+  ],
+  "cases": [
+    {
+      "id": "owner01",
+      "question": "Я выпустился из дома, что мне делать?",
+      "oracle_material_ids": [],
+      "fact_groups": [],
+      "required_links": [],
+      "forbidden_resources": [],
+      "allow_clarify": true,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact",
+        "ambiguous"
+      ],
+      "clarify_required": true
+    },
+    {
+      "id": "owner02",
+      "question": "Помоги мне подать документы для работы",
+      "oracle_material_ids": [
+        "employment_docs"
+      ],
+      "fact_groups": [
+        [
+          "паспорт"
+        ],
+        [
+          "индивидуального уч",
+          "снилс"
+        ],
+        [
+          "если работа не первая",
+          "если работал"
+        ]
+      ],
+      "required_links": [
+        "employment_docs"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact",
+        "documents_immediately"
+      ]
+    },
+    {
+      "id": "owner03",
+      "question": "Разберись, пожалуйста, с поступлением в университет",
+      "oracle_material_ids": [
+        "university"
+      ],
+      "fact_groups": [
+        [
+          "программ"
+        ],
+        [
+          "срок"
+        ],
+        [
+          "экзамен",
+          "испытан"
+        ]
+      ],
+      "required_links": [
+        "university"
+      ],
+      "forbidden_resources": [
+        "app_work",
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact"
+      ]
+    },
+    {
+      "id": "owner04",
+      "question": "Как мне заработать денег?",
+      "oracle_material_ids": [
+        "employment_docs"
+      ],
+      "fact_groups": [
+        [
+          "паспорт"
+        ],
+        [
+          "индивидуального уч",
+          "снилс"
+        ]
+      ],
+      "required_links": [
+        "employment_docs",
+        "app_work"
+      ],
+      "forbidden_resources": [
+        "app_rental"
+      ],
+      "allow_clarify": true,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact",
+        "goal_may_need_clarification"
+      ]
+    },
+    {
+      "id": "owner05",
+      "question": "Как получить квартиру?",
+      "oracle_material_ids": [
+        "hq_state_housing_apply"
+      ],
+      "fact_groups": [
+        [
+          "список"
+        ],
+        [
+          "регион"
+        ],
+        [
+          "паспорт"
+        ]
+      ],
+      "required_links": [
+        "hq_state_housing_apply"
+      ],
+      "forbidden_resources": [
+        "app_work"
+      ],
+      "allow_clarify": true,
+      "max_chars": 1400,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact",
+        "housing_purpose_ambiguous"
+      ]
+    },
+    {
+      "id": "owner06",
+      "question": "Мне положена квартира",
+      "oracle_material_ids": [
+        "hq_state_housing_right"
+      ],
+      "fact_groups": [
+        [
+          "основан"
+        ],
+        [
+          "23 года"
+        ],
+        [
+          "письменн"
+        ]
+      ],
+      "required_links": [
+        "hq_state_housing_right"
+      ],
+      "forbidden_resources": [
+        "app_work"
+      ],
+      "allow_clarify": false,
+      "max_chars": 1300,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_exact",
+        "entitlement_not_confirmed"
+      ]
+    },
+    {
+      "id": "screenshot01",
+      "question": "я скоро выпускаюсь из детдома и не знаю, что делать с работой",
+      "oracle_material_ids": [
+        "employment_docs",
+        "resume_first",
+        "job_contract"
+      ],
+      "fact_groups": [
+        [
+          "паспорт"
+        ],
+        [
+          "индивидуального уч",
+          "снилс"
+        ]
+      ],
+      "required_links": [
+        "employment_docs",
+        "app_work"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "owner_screenshot",
+        "water_negative_anchor"
+      ]
+    },
+    {
+      "id": "dev01",
+      "question": "Хочу устроиться на работу. Какие документы приготовить?",
+      "oracle_material_ids": [
+        "employment_docs"
+      ],
+      "fact_groups": [
+        [
+          "паспорт"
+        ],
+        [
+          "индивидуального уч",
+          "снилс"
+        ]
+      ],
+      "required_links": [
+        "employment_docs",
+        "app_work"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "development_paraphrase"
+      ]
+    },
+    {
+      "id": "dev02",
+      "question": "Поступлю по квоте точно без экзаменов?",
+      "oracle_material_ids": [
+        "bq_quota_contest"
+      ],
+      "fact_groups": [
+        [
+          "не гарантирует"
+        ],
+        [
+          "испытан",
+          "требован"
+        ]
+      ],
+      "required_links": [
+        "bq_quota_contest"
+      ],
+      "forbidden_resources": [
+        "app_work",
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 1000,
+      "forbidden_claims": [],
+      "tags": [
+        "conditions",
+        "development"
+      ]
+    },
+    {
+      "id": "dev03",
+      "question": "В квартире пахнет газом",
+      "oracle_material_ids": [
+        "hq_household_gas"
+      ],
+      "fact_groups": [
+        [
+          "112",
+          "104"
+        ]
+      ],
+      "required_links": [
+        "hq_household_gas"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_work",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 5000,
+      "forbidden_claims": [],
+      "tags": [
+        "urgent",
+        "development"
+      ]
+    },
+    {
+      "id": "dev04",
+      "question": "Как стирать рабочую одежду?",
+      "oracle_material_ids": [
+        "hq_household_wash"
+      ],
+      "fact_groups": [
+        [
+          "стир",
+          "ярлык"
+        ]
+      ],
+      "required_links": [
+        "hq_household_wash"
+      ],
+      "forbidden_resources": [
+        "app_work",
+        "app_rental",
+        "app_help"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "incidental_words",
+        "development"
+      ]
+    },
+    {
+      "id": "dev05",
+      "question": "Мне не выплатили зарплату. Как защитить трудовые права?",
+      "oracle_material_ids": [
+        "work_wages"
+      ],
+      "fact_groups": [
+        [
+          "дат"
+        ],
+        [
+          "работодател"
+        ],
+        [
+          "инспекци"
+        ]
+      ],
+      "required_links": [
+        "work_wages"
+      ],
+      "forbidden_resources": [
+        "app_work",
+        "app_rental"
+      ],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [
+        "приостанови.*работ",
+        "гарантирован.*выплат"
+      ],
+      "tags": [
+        "source_checked_coverage",
+        "development"
+      ],
+      "content_gap": false,
+      "required_source_urls": [
+        "https://xn--80akibcicpdbetz7e2g.xn--p1ai/instruction/7",
+        "https://xn--80akibcicpdbetz7e2g.xn--p1ai/problems"
+      ]
+    },
+    {
+      "id": "dev06",
+      "question": "Как получить квартиру, если мне уже 24?",
+      "oracle_material_ids": [
+        "hq_state_housing_right"
+      ],
+      "fact_groups": [
+        [
+          "23 года"
+        ],
+        [
+          "не отказывайся"
+        ]
+      ],
+      "required_links": [
+        "hq_state_housing_right"
+      ],
+      "forbidden_resources": [
+        "app_work"
+      ],
+      "allow_clarify": false,
+      "max_chars": 1300,
+      "forbidden_claims": [],
+      "tags": [
+        "essential_exception",
+        "development"
+      ]
+    },
+    {
+      "id": "dev07",
+      "question": "Сделай прогноз курса биткоина на завтра",
+      "oracle_material_ids": [],
+      "fact_groups": [],
+      "required_links": [],
+      "forbidden_resources": [],
+      "allow_clarify": false,
+      "max_chars": 900,
+      "forbidden_claims": [],
+      "tags": [
+        "outside_catalog",
+        "development"
+      ],
+      "outside_base": true
+    },
+    {
+      "id": "dev08",
+      "question": "Впервые устраиваюсь работать, СНИЛС ещё нет",
+      "oracle_material_ids": [
+        "employment_docs"
+      ],
+      "fact_groups": [
+        [
+          "работодатель"
+        ],
+        [
+          "если оно уже есть",
+          "если уже есть"
+        ],
+        [
+          "не полный"
+        ]
+      ],
+      "required_links": [
+        "employment_docs"
+      ],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental"
+      ],
+      "allow_clarify": false,
+      "max_chars": 1300,
+      "forbidden_claims": [],
+      "tags": [
+        "conditional_document",
+        "development"
+      ]
+    }
+  ]
+}

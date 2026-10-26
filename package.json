@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "node --test project/miniapp/tests/network.test.cjs project/miniapp/tests/planner.test.cjs project/miniapp/tests/planner-ai-recovery.test.cjs project/miniapp/tests/planner-draft-codec.test.cjs project/miniapp/tests/material-link-text.test.cjs project/miniapp/tests/screen-model.test.cjs",
+    "test:browser": "node tools/submission/acceptance_browser.cjs",
+    "test:ai:browser": "node tools/submission/ai_error_browser.cjs",
+    "test:planner:browser": "node tools/submission/acceptance_browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.59.1"
+  }
+}

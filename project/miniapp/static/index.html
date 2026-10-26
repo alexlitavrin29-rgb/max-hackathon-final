@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#edeef2">
+  <meta name="color-scheme" content="only light">
+  <title>Точка опоры</title>
+  <script src="/static/theme.js"></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/max-ui.css">
+  <link rel="stylesheet" href="/static/planner-tasks.css">
+  <link rel="stylesheet" href="/static/resume.css">
+  <link rel="stylesheet" href="/static/redesign.css">
+  <script src="https://st.max.ru/js/max-web-app.js" defer></script>
+  <script src="/static/planner-core.js" defer></script>
+  <script src="/static/planner-draft-codec.js" defer></script>
+  <script src="/static/material-link-text.js" defer></script>
+  <script src="/static/plan.js" defer></script>
+  <script src="/static/handbook.js" defer></script>
+  <script src="/static/resume.js" defer></script>
+  <script src="/static/screen-model.js" defer></script>
+  <script src="/static/progress.js" defer></script>
+  <script src="/static/housing.js" defer></script>
+  <script src="/static/career.js" defer></script>
+  <script src="/static/screens.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <button id="home" class="brand" aria-label="Точка опоры — к разделам">Точка опоры</button>
+    <div class="topbar-actions"><button id="appearance-open" class="icon-button" aria-label="Оформление"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18V3Z"/><path d="M12 3a9 9 0 0 1 0 18"/></svg></button><button id="share" class="icon-button" aria-label="Поделиться ↗" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 15V3m-4 4 4-4 4 4M7 10H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/></svg></button></div>
+  </header>
+  <main>
+    <p id="preview" class="preview" hidden>Локальный предпросмотр · поиск использует действующие источники</p>
+    <section id="landing">
+      <p class="home-subtitle">С чем тебе помочь?</p>
+      <button id="home-answer" class="home-answer" type="button"><span><strong>Найти ответ</strong><small>Разобраться в своей ситуации</small></span><img src="/static/figma/answer-help.svg" alt=""><span class="answer-arrow" aria-hidden="true">↗</span></button>
+      <div id="theme-grid" class="theme-grid"></div>
+      <div id="home-searches" class="home-searches" aria-label="Быстрый поиск">
+        <button type="button" class="search-entry" data-section="rental"><img src="/static/figma/search-housing.svg" alt=""><span><strong>Поиск жилья</strong><small>Квартиры в твоём городе</small></span><span class="search-arrow" aria-hidden="true">↗</span></button>
+        <button type="button" class="search-entry" data-section="work"><img src="/static/figma/search-work.svg" alt=""><span><strong>Поиск работы</strong><small>Подходящие вакансии</small></span><span class="search-arrow" aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+    <section id="topic" hidden aria-label="Тема помощи"></section>
+    <div id="search-plan-return" class="context-return" hidden><button id="search-return-button" type="button">← Вернуться к плану</button><span>Твой черновик сохранён</span></div>
+    <section id="search" hidden>
+      <button id="back" class="back">← Все разделы</button>
+      <div class="section-heading"><div><h1 id="section-title"></h1></div></div>
+      <button id="search-resume" class="plan-secondary resume-entry" hidden>Составить резюме</button>
+      <div id="summary-box" class="summary" hidden><details><summary>Ваши условия</summary><div id="summary"></div></details><button id="edit" class="quiet">Изменить</button></div>
+      <div id="notices" aria-live="polite"></div>
+      <div id="carousel" hidden>
+        <div class="carousel-header"><span>Результаты</span><span id="count" aria-live="polite"></span></div>
+        <article id="card" tabindex="0" aria-label="Карточка результата"></article>
+        <div class="carousel-nav"><button id="previous" aria-label="Предыдущая карточка">←</button><span>Листайте карточки</span><button id="next" aria-label="Следующая карточка">→</button></div>
+      </div>
+      <div id="controls" class="controls"></div>
+      <form id="composer">
+        <p id="status" role="status" aria-live="polite"></p>
+        <label for="wishes" id="input-label">Напишите, что ищете</label>
+        <div class="input-wrap"><textarea id="wishes" maxlength="2500" rows="1" placeholder="Город, пожелания и важные условия…"></textarea><button id="submit" type="submit" aria-label="Отправить пожелания">↑</button></div>
+        <span class="input-hint">Можно своими словами. Если нужно, уточним детали.</span>
+      </form>
+    </section>
+    <section id="material" hidden>
+      <button id="material-back" class="back">← К сохранённому</button>
+      <p class="saved-intro">Полезный ответ из «Точки опоры»</p>
+      <article id="material-card" class="saved-card"></article>
+    </section>
+    <section id="plan" hidden aria-labelledby="plan-heading">
+      <button id="plan-detail-back" class="back" hidden>Назад к планам</button>
+      <div class="plan-heading"><div><p class="plan-eyebrow">Шаг за шагом</p><h1 id="plan-heading">Планы</h1></div><button id="plan-refresh" class="quiet">Обновить список</button></div>
+      <div id="plan-calendar"></div>
+      <p class="plan-intro">Понятные шаги к тому, что для тебя важно.</p><div id="plan-switch" class="plan-switch"><button data-plan-mode="plans" aria-pressed="true">По планам</button><button data-plan-mode="tasks" aria-pressed="false">Все задачи</button></div>
+      <div class="plan-main-actions"><button id="plan-ai" class="plan-primary" aria-label="Помочь составить план"><strong>Помочь составить план</strong><span>От вопроса — к понятным шагам</span></button></div>
+      <div class="plan-toolbar"><button id="plan-new-task" class="plan-primary">Добавить дело</button><button id="plan-new-goal" class="plan-secondary">Создать цель</button></div>
+      <button id="plan-resume" class="plan-secondary" hidden>Вернуться к незавершённому запросу</button>
+      <p id="plan-status" role="status" aria-live="polite"></p>
+      <p id="plan-error" class="plan-error" role="alert" hidden></p>
+      <div id="plan-list"></div>
+
+      <button id="plan-example" class="quiet">Пример плана</button>
+      <p class="plan-footnote">Пример можно изменить перед сохранением. Напоминания работают после отдельного подключения отправки.</p>
+    </section>
+    <section id="tasks" hidden aria-label="Задачи"><div class="plan-heading"><h1>Планы</h1></div><div class="plan-switch"><button data-plan-mode="plans" aria-pressed="false">По планам</button><button data-plan-mode="tasks" aria-pressed="true">Все задачи</button></div><button id="tasks-new" class="plan-secondary">Добавить дело</button><p class="plan-intro">Шаги из всех планов и отдельные дела — по датам.</p><p id="tasks-status" role="status" aria-live="polite"></p><p id="tasks-error" class="plan-error" role="alert" hidden></p><div id="tasks-list"></div></section>
+    <section id="resume" hidden aria-label="Моё резюме"></section>
+    <section id="handbook" hidden aria-label="Справочник"></section>
+    <section id="saved" hidden>
+      <h1>Сохранённое <span id="saved-count"></span></h1>
+      <p id="saved-confirmation" role="status" hidden></p>
+      <p class="saved-intro">Всё, что ты сохранил сердечком, — здесь.</p>
+      <div id="saved-filters" class="saved-filters"></div><div id="saved-list"></div>
+      <details class="data-settings"><summary>Управление данными</summary><button id="delete-account" class="quiet">Удалить сохранения, планы, резюме и напоминания</button></details>
+    </section>
+    <p id="page-status" role="status" aria-live="polite"></p>
+    <div id="error" role="alert" hidden></div>
+    <button id="reopen" class="quiet" hidden>Начать новый сеанс</button>
+    <section id="share-panel" class="share-panel" hidden aria-label="Поделиться"><strong>Поделиться «Точкой опоры»</strong><p>Отправится только ссылка. Ваши пожелания и результаты останутся у вас.</p><button id="share-section">Этим разделом ↗</button><button id="share-app">Всем приложением ↗</button><button id="share-close" class="quiet">Закрыть</button></section>
+  </main>
+  <nav class="tabs" aria-label="Разделы приложения">
+    <button id="tab-home" aria-current="page"><span aria-hidden="true"><img class="nav-art" src="/static/figma/housing-house-cropped.svg" alt=""></span>Главная</button>
+    <button id="tab-plan"><span aria-hidden="true"><img class="nav-art" src="/static/figma/art-plans.svg" alt=""></span>Планы</button>
+    <button id="tab-tasks" hidden aria-hidden="true" tabindex="-1"><span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m3 6 2 2 3-4m3 2h10M3 13l2 2 3-4m3 2h10M3 20l2 2 3-4m3 2h10"/></svg></span>Задачи</button>
+    <button id="tab-handbook"><span aria-hidden="true"><img class="nav-art" src="/static/figma/art-handbook.svg" alt=""></span>Справочник</button>
+    <button id="tab-saved"><span aria-hidden="true"><img class="nav-art" src="/static/figma/support-heart-cropped.svg" alt=""></span>Сохранённое</button>
+  </nav>
+  <dialog id="appearance-dialog" class="appearance-dialog" aria-labelledby="appearance-title">
+    <form method="dialog"><h2 id="appearance-title">Оформление</h2>
+      <p>Выберите, как выглядит приложение.</p>
+      <fieldset class="appearance-options"><legend class="visually-hidden">Тема</legend>
+        <label><input type="radio" name="appearance" value="system"><span>Как на устройстве</span></label>
+        <label><input type="radio" name="appearance" value="light"><span>Светлая</span></label>
+        <label><input type="radio" name="appearance" value="dark"><span>Тёмная</span></label>
+      </fieldset>
+      <button class="plan-primary" type="submit">Готово</button>
+    </form>
+  </dialog>
+  <dialog id="plan-dialog" aria-labelledby="plan-dialog-title"></dialog>
+</div>
+</body>
+</html>

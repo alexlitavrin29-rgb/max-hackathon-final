@@ -1,0 +1,20 @@
+/* Shared calendar, saved-plan steps and same-entity task view. */
+.plan-goal>summary{font-size:1.08rem;font-weight:700;cursor:pointer;padding:12px 0;overflow-wrap:anywhere}
+.plan-steps{padding-left:24px}.plan-step{padding:12px 0;border-bottom:1px solid var(--line,#d9dfe4)}
+.plan-step>.plan-meta{display:block;margin:5px 0}.plan-task-open{display:block;width:100%;padding:8px 0;border:0;background:transparent;color:var(--text,#17232b);font:inherit;font-weight:650;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
+.plan-return-link{position:sticky;top:72px;z-index:3;width:100%;margin:8px 0;padding:12px;border:1px solid var(--line,#d9dfe4);border-radius:12px;background:var(--surface,#fff);color:var(--text,#17232b);white-space:normal;overflow-wrap:anywhere;text-align:left;cursor:pointer}
+.schedule-shortcuts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.schedule-shortcuts button{min-height:40px;flex:1 1 42%}
+.tasks-calendar{margin:16px 0;padding:12px;border:1px solid var(--line,#d9dfe4);border-radius:14px;min-width:0}.tasks-calendar>summary{cursor:pointer;font-weight:650;padding:8px 0}
+.tasks-calendar-heading{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:8px 0}.tasks-calendar-heading strong{font-size:.95rem;text-align:center;overflow-wrap:anywhere}.tasks-calendar-heading button{min-width:40px;min-height:40px}
+.tasks-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;width:100%}.tasks-weekday{text-align:center;font-size:.75rem;padding:8px 0;color:var(--muted,#596875)}
+.tasks-calendar-day{min-width:0;min-height:36px;padding:5px 0;border:1px solid transparent;border-radius:8px;background:transparent;color:inherit;cursor:pointer;font:inherit;font-size:.8rem}.tasks-calendar-day[aria-current=date]{border-color:var(--accent,#28654a)}.tasks-calendar-day[aria-pressed=true]{background:var(--accent,#28654a);color:#fff}
+#tasks-list .plan-field select{max-width:100%;width:100%}#tasks-list .plan-actions{flex-wrap:wrap}#tasks-list>.plan-actions{margin:10px 0}.tasks-calendar button:focus-visible,.plan-task-open:focus-visible{outline:3px solid var(--accent,#28654a);outline-offset:2px}
+.tasks-calendar{background:var(--card,#fff);border:0;border-radius:22px;padding:16px;margin:14px 0 20px}
+.tasks-calendar-title{font-size:18px;line-height:24px;margin:0 0 6px}
+.tasks-calendar-heading{margin:4px 0 8px}.tasks-calendar-heading strong{font-size:16px;text-transform:capitalize}
+.tasks-calendar-grid{gap:4px}.tasks-calendar-day{min-height:42px;font-size:15px;font-weight:600;line-height:20px}
+.tasks-calendar-day.has-tasks{color:var(--link,#006ee5)}.tasks-calendar-day[aria-pressed=true]{background:var(--accent,#007aff);color:#fff}
+.calendar-selection{display:grid;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line,#d9dfe4);scroll-margin-bottom:calc(100px + env(safe-area-inset-bottom))}
+.calendar-selection>strong{font-size:15px}.calendar-selection>.plan-primary{width:100%;text-align:center}
+.calendar-task{min-height:42px;text-align:left;padding:10px 12px;border:0;border-radius:12px;background:var(--secondary,#f5f7fa);color:var(--text,#17232b);font:inherit;overflow-wrap:anywhere}
+@media(prefers-color-scheme:dark){.plan-task-open,.plan-return-link{color:var(--text,#edf3ef)}.plan-return-link{background:var(--surface,#202b28)}.tasks-weekday{color:var(--muted,#b8c6bf)}}

@@ -1,0 +1,12 @@
+/* Shared calendar, saved-plan steps and same-entity task view. */
+.plan-goal>summary{font-size:1.08rem;font-weight:700;cursor:pointer;padding:12px 0;overflow-wrap:anywhere}
+.plan-steps{padding-left:24px}.plan-step{padding:12px 0;border-bottom:1px solid var(--line,#d9dfe4)}
+.plan-step>.plan-meta{display:block;margin:5px 0}.plan-task-open{display:block;width:100%;padding:8px 0;border:0;background:transparent;color:var(--text,#17232b);font:inherit;font-weight:650;text-align:left;white-space:normal;overflow-wrap:anywhere;cursor:pointer}
+.plan-return-link{position:sticky;top:72px;z-index:3;width:100%;margin:8px 0;padding:12px;border:1px solid var(--line,#d9dfe4);border-radius:12px;background:var(--surface,#fff);color:var(--text,#17232b);white-space:normal;overflow-wrap:anywhere;text-align:left;cursor:pointer}
+.schedule-shortcuts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.schedule-shortcuts button{min-height:40px;flex:1 1 42%}
+.tasks-calendar{margin:16px 0;padding:12px;border:1px solid var(--line,#d9dfe4);border-radius:14px;min-width:0}.tasks-calendar>summary{cursor:pointer;font-weight:650;padding:8px 0}
+.tasks-calendar-heading{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:8px 0}.tasks-calendar-heading strong{font-size:.95rem;text-align:center;overflow-wrap:anywhere}.tasks-calendar-heading button{min-width:40px;min-height:40px}
+.tasks-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;width:100%}.tasks-weekday{text-align:center;font-size:.75rem;padding:8px 0;color:var(--muted,#596875)}
+.tasks-calendar-day{min-width:0;min-height:36px;padding:5px 0;border:1px solid transparent;border-radius:8px;background:transparent;color:inherit;cursor:pointer;font:inherit;font-size:.8rem}.tasks-calendar-day[aria-current=date]{border-color:var(--accent,#28654a)}.tasks-calendar-day[aria-pressed=true]{background:var(--accent,#28654a);color:#fff}
+#tasks-list .plan-field select{max-width:100%;width:100%}#tasks-list .plan-actions{flex-wrap:wrap}#tasks-list>.plan-actions{margin:10px 0}.tasks-calendar button:focus-visible,.plan-task-open:focus-visible{outline:3px solid var(--accent,#28654a);outline-offset:2px}
+@media(prefers-color-scheme:dark){.plan-task-open,.plan-return-link{color:var(--text,#edf3ef)}.plan-return-link{background:var(--surface,#202b28)}.tasks-weekday{color:var(--muted,#b8c6bf)}}

@@ -1,0 +1,2798 @@
+{
+  "version": 1,
+  "methodology": "Independent curated Russian user-style questions grounded in published reachable child-safe cards. Not production user logs. Oracles frozen before candidate/baseline scoring. Source status retained; published editorial cards disclose incomplete verification rather than claiming all legal facts verified. Retrieval and ideal-selection assembly are offline diagnostics, never evidence of model correctness.",
+  "frozen_source_commit": "6e79975e8b9a2bf046ac0a0f1b3b5b58e7d55eee",
+  "cases": [
+    {
+      "id": "q001",
+      "question": "Выпускаюсь из интерната: есть ли у меня право на жильё от государства?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_right"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_right"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_right",
+          "urls": [
+            "/?handbook=hq_state_housing_right",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://www.consultant.ru/document/cons_doc_LAW_322144/93e354c4ca554513570cdcc1bc4582f8b5b0493c/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [
+            "Регистрация по адресу сама по себе не решает вопрос о праве на квартиру.",
+            "Если уже исполнилось 23 года, а жильё не получено, не отказывайся от обращения"
+          ],
+          "first_action_units": [
+            "Начни с опеки или органа региона"
+          ],
+          "source_text_sha256": "ae4158a646bf0d146105f285e2e783e2e4ef8e8fbd67ce558191e9ffb4e01387",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q002",
+      "question": "Мне уже 24, сирота, квартиры не было. Поздно обращаться?",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_right"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_right"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_right",
+          "urls": [
+            "/?handbook=hq_state_housing_right",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://www.consultant.ru/document/cons_doc_LAW_322144/93e354c4ca554513570cdcc1bc4582f8b5b0493c/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [
+            "Регистрация по адресу сама по себе не решает вопрос о праве на квартиру.",
+            "Если уже исполнилось 23 года, а жильё не получено, не отказывайся от обращения"
+          ],
+          "first_action_units": [
+            "Начни с опеки или органа региона"
+          ],
+          "source_text_sha256": "ae4158a646bf0d146105f285e2e783e2e4ef8e8fbd67ce558191e9ffb4e01387",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q003",
+      "question": "Хочу проверить, включили ли меня в список на квартиру, с чего начать?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_apply"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_apply"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_apply",
+          "urls": [
+            "/?handbook=hq_state_housing_apply",
+            "https://www.consultant.ru/document/cons_doc_LAW_322144/93e354c4ca554513570cdcc1bc4582f8b5b0493c/",
+            "https://www.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "0b9fd2684ee85f08022f0c5306510c824d6823d6edcf7446b17fc0eb31194369",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q004",
+      "question": "В очереди на квартиру стою годами, куда жаловаться на задержку?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_delay"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_delay"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_delay",
+          "urls": [
+            "/?handbook=hq_state_housing_delay",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://epp.genproc.gov.ru/ru/gprf/internet-reception/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "bb11b22c2447cddcec8cd18b94dbc4d62e6d131fbe5e8a34b9c9d36597bb9539",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q005",
+      "question": "После переезда в другую область как перенести сведения из списка на жильё?",
+      "tags": [],
+      "intent": "unsupported",
+      "topic": null,
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q006",
+      "question": "Ключи от государственной квартиры дали: она теперь моя собственность?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_agreement"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_agreement"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_agreement",
+          "urls": [
+            "/?handbook=hq_state_housing_agreement",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://dom.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "7b7fe501b450d507a70df82763e923eb6c43bb984777caddcffb801b39cbf065",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q007",
+      "question": "В старую квартиру вернуться нельзя, как это официально подтвердить?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_return"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_return"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_return",
+          "urls": [
+            "/?handbook=hq_state_housing_return",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "c82135fda904022f8cb9d1fbeeb5b67dd4fcc95b66ba770935b4c9c9dabf7ce7",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q008",
+      "question": "Какие бумаги забрать из центра перед выпуском для жилья?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "exit_docs"
+        ]
+      ],
+      "ideal_material_ids": [
+        "exit_docs"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "exit_docs",
+          "urls": [
+            "/?handbook=exit_docs",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://www.consultant.ru/document/cons_doc_LAW_322144/93e354c4ca554513570cdcc1bc4582f8b5b0493c/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "5323a2f3f97c4abb1936676e8f5c602114192497f409b460a581ad937caaabfa",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q009",
+      "question": "Квартиру уже одобрили: какой договор мне предложат подписать?",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_state_housing_agreement"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_state_housing_agreement"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_state_housing_agreement",
+          "urls": [
+            "/?handbook=hq_state_housing_agreement",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/",
+            "https://dom.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "7b7fe501b450d507a70df82763e923eb6c43bb984777caddcffb801b39cbf065",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q010",
+      "question": "Хочу сертификат вместо квартиры, какие там условия?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "bq_certificate_conditions"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_certificate_conditions"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_certificate_conditions",
+          "urls": [
+            "/?handbook=bq_certificate_conditions",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/9d91bd8e5bf873a9e49ce1c64b28dd268cd1828b/"
+          ],
+          "qualifier_units": [
+            "достигших 23 лет",
+            "доход за последние 12 месяцев",
+            "Соответствие подтверждает уполномоченный орган."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "f7a98b3db337c6987a6e006f6004d188bb89c0acaae188fcce0489469656ef51",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q011",
+      "question": "Сертификатом на жильё можно закрыть кредит или только купить квартиру?",
+      "tags": [
+        "benefits"
+      ],
+      "intent": "answer",
+      "topic": "benefits",
+      "expected_material_groups": [
+        [
+          "bq_certificate_use"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_certificate_use"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_certificate_use",
+          "urls": [
+            "/?handbook=bq_certificate_use",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/9d91bd8e5bf873a9e49ce1c64b28dd268cd1828b/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "89478cf3642c19f65d939a89a385cfdbed66640b2308cbde8a1a944380abdfdf",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q012",
+      "question": "Можно ли досрочно закончить специализированный найм?",
+      "tags": [
+        "benefits"
+      ],
+      "intent": "answer",
+      "topic": "benefits",
+      "expected_material_groups": [
+        [
+          "bq_shorten_conditions"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_shorten_conditions"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_shorten_conditions",
+          "urls": [
+            "/?handbook=bq_shorten_conditions",
+            "https://www.consultant.ru/document/cons_doc_LAW_12778/785ff748eda8db09e9275dc8231632fa1a2d0062/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "d7e9735e01ee52ec27981c86a373b5f621ebc68bc70427e3d07725bd4c11b347",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q013",
+      "question": "Договор найма частной квартиры принесли, что в нём проверить?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_contract"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_contract"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_contract",
+          "urls": [
+            "/?handbook=hq_rent_contract",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "f756ca1dffd8c34927e1003ce7b2066f20647e218e278da52d47d928a7715fa0",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q014",
+      "question": "Нужна комната в аренду, хочу посмотреть варианты",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_view"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_view"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_view",
+          "urls": [
+            "/?handbook=hq_rent_view",
+            "https://www.gosuslugi.ru/600359/1/form",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/"
+          ],
+          "qualifier_units": [
+            "В выписке, заказанной посторонним, персональные данные владельца могут быть скрыты."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "9aa4718bb4d3d49f0ff57975056339b2a599cd2834cdecf3dd6d79f2742e8b2a",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [
+        "app_rental"
+      ],
+      "forbidden_resources": [
+        "app_help",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q015",
+      "question": "Перед просмотром требуют перевести бронь, как проверить сдающего?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_view"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_view"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_view",
+          "urls": [
+            "/?handbook=hq_rent_view",
+            "https://www.gosuslugi.ru/600359/1/form",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/"
+          ],
+          "qualifier_units": [
+            "В выписке, заказанной посторонним, персональные данные владельца могут быть скрыты."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "9aa4718bb4d3d49f0ff57975056339b2a599cd2834cdecf3dd6d79f2742e8b2a",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q016",
+      "question": "Завтра заезжаю в съёмную квартиру: нужен акт с показаниями счётчиков?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_in"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_in"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_in",
+          "urls": [
+            "/?handbook=hq_rent_in",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/",
+            "https://dom.gosuslugi.ru/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "2e9353033ff7fccadb549e5898f303757d491a7dd47fb2cf76984c9d667d565f",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q017",
+      "question": "Съезжаю от хозяина, как оформить возврат залога?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_out"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_out"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_out",
+          "urls": [
+            "/?handbook=hq_rent_out",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "15ab3d3de8afc48e093c3924ff177ebd96cd90f9d2ab748b698aa9e2bd2316c3",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q018",
+      "question": "Не ищу жильё: хочу только проверить уже подписанный договор найма",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_contract"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_contract"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_contract",
+          "urls": [
+            "/?handbook=hq_rent_contract",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "f756ca1dffd8c34927e1003ce7b2066f20647e218e278da52d47d928a7715fa0",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q019",
+      "question": "Как узнать сколько я должен за коммуналку и попросить рассрочку?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_debt"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_debt"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_debt",
+          "urls": [
+            "/?handbook=hq_utilities_debt",
+            "https://www.gosuslugi.ru/600177/1/form",
+            "https://dom.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "c60733daec59e17d606733103a5fcf76f9cb6e266d95cde9095a4a86571429b9",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q020",
+      "question": "В платёжке непонятная строка за капремонт, я наниматель",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_included"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_included"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_included",
+          "urls": [
+            "/?handbook=hq_utilities_included",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645",
+            "https://dom.gosuslugi.ru/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "dc7edf182a0d91bd321fba7a7aacc71e545fe290de699502234bd7faca36676c",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q021",
+      "question": "Сумма за воду резко выросла, как проверить расчёт?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_calculate"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_calculate"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_calculate",
+          "urls": [
+            "/?handbook=hq_utilities_calculate",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645",
+            "https://dom.gosuslugi.ru/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "47de448c1009c372667a8674cfcf39bdf18fe898564c3b9bb2ac54159154318a",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q022",
+      "question": "Где найти тариф на отопление для моего дома?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_tariffs"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_tariffs"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_tariffs",
+          "urls": [
+            "/?handbook=hq_utilities_tariffs",
+            "https://dom.gosuslugi.ru/",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "824c8e3cfcfeae5af338e0b730217dec1dcfe7663cdc43186fcda560d6765d08",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q023",
+      "question": "Когда передавать показания счетчика, везде одна дата?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_meters"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_meters"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_meters",
+          "urls": [
+            "/?handbook=hq_utilities_meters",
+            "https://dom.gosuslugi.ru/",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645"
+          ],
+          "qualifier_units": [
+            "Единой даты передачи для всех услуг и городов нет."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "6f00ead3f88db24c5cf7b8c9ed6b2b5d350b16a3774afdad448ade0bcf21c230",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q024",
+      "question": "До какого числа платить ЖКУ в 2026 году?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_pay"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_pay"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_pay",
+          "urls": [
+            "/?handbook=hq_utilities_pay",
+            "https://epp.genproc.gov.ru/ru/proc_13/activity/legal-education/explain/e8319606/",
+            "https://dom.gosuslugi.ru/",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645"
+          ],
+          "qualifier_units": [
+            "С 1 марта 2026 года",
+            "до 15-го числа следующего месяца"
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "95f03900e93ca7b740818ca01caa8b701312aa9827aedb44a32fea362d176f00",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q025",
+      "question": "Из кухни сейчас сильно несёт газом, что мне первым делом сделать?",
+      "tags": [
+        "housing",
+        "negation",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_household_gas"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_household_gas"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_household_gas",
+          "urls": [
+            "/?handbook=hq_household_gas",
+            "https://01.mchs.gov.ru/deyatelnost/press-centr/novosti/5817720"
+          ],
+          "qualifier_units": [
+            "Не возвращайся, пока специалисты не разрешат."
+          ],
+          "first_action_units": [
+            "выйти",
+            "104 или 112"
+          ],
+          "source_text_sha256": "df5b5a9aa576616f8578bfccb485912005966bb35490661c57d137d14154f71f",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q026",
+      "question": "Пахнит газом в квартире, боюсь включать свет",
+      "tags": [
+        "housing",
+        "typo",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_household_gas"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_household_gas"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_household_gas",
+          "urls": [
+            "/?handbook=hq_household_gas",
+            "https://01.mchs.gov.ru/deyatelnost/press-centr/novosti/5817720"
+          ],
+          "qualifier_units": [
+            "Не возвращайся, пока специалисты не разрешат."
+          ],
+          "first_action_units": [
+            "выйти",
+            "104 или 112"
+          ],
+          "source_text_sha256": "df5b5a9aa576616f8578bfccb485912005966bb35490661c57d137d14154f71f",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q027",
+      "question": "Газа не пахнет; хочу памятку, что делать если появится запах",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_household_gas"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_household_gas"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_household_gas",
+          "urls": [
+            "/?handbook=hq_household_gas",
+            "https://01.mchs.gov.ru/deyatelnost/press-centr/novosti/5817720"
+          ],
+          "qualifier_units": [
+            "Не возвращайся, пока специалисты не разрешат."
+          ],
+          "first_action_units": [
+            "выйти",
+            "104 или 112"
+          ],
+          "source_text_sha256": "df5b5a9aa576616f8578bfccb485912005966bb35490661c57d137d14154f71f",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q028",
+      "question": "Вода течёт прямо на розетку, что делать сейчас?",
+      "tags": [
+        "housing",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_household_water"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_household_water"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_household_water",
+          "urls": [
+            "/?handbook=hq_household_water",
+            "https://dom.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "Не трогай мокрые розетки, провода и приборы."
+          ],
+          "source_text_sha256": "d8add499ee7a0c6303e9c8b39fc93e6d7e475e5c9f1b2812fcf63cde8fe8e4ad",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q029",
+      "question": "Сегодня остался на улице и некуда идти спать",
+      "tags": [
+        "housing",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "shelter"
+        ]
+      ],
+      "ideal_material_ids": [
+        "shelter"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "shelter",
+          "urls": [
+            "/?handbook=shelter",
+            "https://www.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/",
+            "https://www.consultant.ru/document/cons_doc_LAW_156558/"
+          ],
+          "qualifier_units": [
+            "возможность и условия конкретного места нужно уточнить."
+          ],
+          "first_action_units": [
+            "сначала найди безопасное место."
+          ],
+          "source_text_sha256": "b27330223a1db87a96afbfc3fdc3630062802a5867dc1faabcb0a69480c84fd1",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [
+        "app_help"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q030",
+      "question": "Мне 16, сегодня негде переночевать, безопасного взрослого нет",
+      "tags": [
+        "housing",
+        "negation",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "shelter"
+        ]
+      ],
+      "ideal_material_ids": [
+        "shelter"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "shelter",
+          "urls": [
+            "/?handbook=shelter",
+            "https://www.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/",
+            "https://www.consultant.ru/document/cons_doc_LAW_156558/"
+          ],
+          "qualifier_units": [
+            "возможность и условия конкретного места нужно уточнить."
+          ],
+          "first_action_units": [
+            "сначала найди безопасное место."
+          ],
+          "source_text_sha256": "b27330223a1db87a96afbfc3fdc3630062802a5867dc1faabcb0a69480c84fd1",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [
+        "app_help"
+      ],
+      "forbidden_resources": [
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q031",
+      "question": "Я не без жилья, ночлег не нужен: хочу разобраться с долгом за ЖКХ",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_utilities_debt"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_utilities_debt"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_utilities_debt",
+          "urls": [
+            "/?handbook=hq_utilities_debt",
+            "https://www.gosuslugi.ru/600177/1/form",
+            "https://dom.gosuslugi.ru/",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "c60733daec59e17d606733103a5fcf76f9cb6e266d95cde9095a4a86571429b9",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": [
+        "hq_household_gas"
+      ]
+    },
+    {
+      "id": "q032",
+      "question": "Хозяин сменил замок и не пускает домой, внутри мои лекарства",
+      "tags": [
+        "housing",
+        "negation",
+        "emergency"
+      ],
+      "intent": "urgent",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_housing_problem_locked"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_housing_problem_locked"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_housing_problem_locked",
+          "urls": [
+            "/?handbook=hq_housing_problem_locked",
+            "https://xn--80adbm1cg.xn--p1ai/",
+            "https://epp.genproc.gov.ru/ru/gprf/internet-reception/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "Не ломай замки и не пытайся войти через окно."
+          ],
+          "source_text_sha256": "8426de150caa8eaa1243679cad48f0a9b35ba9b144c1000994a7b2230803770a",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q033",
+      "question": "Требуют завтра съехать, ничего не подписывал. Что собрать для юриста?",
+      "tags": [
+        "housing",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_housing_problem_steps"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_housing_problem_steps"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_housing_problem_steps",
+          "urls": [
+            "/?handbook=hq_housing_problem_steps",
+            "https://xn--80adbm1cg.xn--p1ai/",
+            "https://epp.genproc.gov.ru/ru/gprf/internet-reception/",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "f8656146f1a6159ce3062ad810c340e9e695aa7decf753532b3b9924809fe384",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q034",
+      "question": "Можно ли выселить за долг просто по требованию хозяина?",
+      "tags": [
+        "housing"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_housing_problem_law"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_housing_problem_law"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_housing_problem_law",
+          "urls": [
+            "/?handbook=hq_housing_problem_law",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/",
+            "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102090645",
+            "https://xn--80adbm1cg.xn--p1ai/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "4ccc9e3700ef1237f30da0fc261f393e09c2ed63d136673bfd915a3bc8f4e97d",
+          "publication_status": "reviewed_reference"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q035",
+      "question": "Паспорт пропал в автобусе, куда обратиться за восстановлением?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_passport_q3"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_passport_q3"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_passport_q3",
+          "urls": [
+            "/?handbook=doc_passport_q3",
+            "https://www.gosuslugi.ru/landing/document-recovery",
+            "https://publication.pravo.gov.ru/document/0001202312290097"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "обратись в подразделение МВД."
+          ],
+          "source_text_sha256": "3d4e80f49ebfef1ebf63bcfbbae166335590f088bad73ed991b621a1f1f579f8",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q036",
+      "question": "Патерял пасспорт, с чего начать востановление?",
+      "tags": [
+        "documents",
+        "typo"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_passport_q3"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_passport_q3"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_passport_q3",
+          "urls": [
+            "/?handbook=doc_passport_q3",
+            "https://www.gosuslugi.ru/landing/document-recovery",
+            "https://publication.pravo.gov.ru/document/0001202312290097"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "обратись в подразделение МВД."
+          ],
+          "source_text_sha256": "3d4e80f49ebfef1ebf63bcfbbae166335590f088bad73ed991b621a1f1f579f8",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q037",
+      "question": "Паспорт не терял: исполнилось двадцать, хочу заменить",
+      "tags": [
+        "documents",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_passport_q2"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_passport_q2"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_passport_q2",
+          "urls": [
+            "/?handbook=doc_passport_q2",
+            "https://www.gosuslugi.ru/600102/1/form",
+            "https://publication.pravo.gov.ru/document/0001202312290097"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "a979568db755fbbe94a50da1be4f9a41c320ddfdcfb45ecea0299b2cdbcabee2",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q038",
+      "question": "Через неделю 14 лет, как получить первый паспорт?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_passport_q1"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_passport_q1"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_passport_q1",
+          "urls": [
+            "/?handbook=doc_passport_q1",
+            "https://www.gosuslugi.ru/600102/1/form",
+            "https://publication.pravo.gov.ru/document/0001202312290097"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "5a0d1242b9323af84ef9aa2bf472240d93ebfe3539c88ec63995f42902efc96c",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q039",
+      "question": "Свидетельство о рождении испортилось, как получить повторное?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_birth_q3"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_birth_q3"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_birth_q3",
+          "urls": [
+            "/?handbook=doc_birth_q3",
+            "https://www.gosuslugi.ru/600408/1/form"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "a04a5d16d795a864f0740e47a5a3942766fcf005ed3a477039261c85637c4293",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q040",
+      "question": "Карточки СНИЛС нет, как узнать сам номер?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_snils_lookup"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_snils_lookup"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_snils_lookup",
+          "urls": [
+            "/?handbook=doc_snils_lookup",
+            "https://sfr.gov.ru/grazhdanam/personificirovannyj_uchet/registraciya_i_oformlenie_snils/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "b9535f7e77fd2d24cbe9dd9c80f18df4ebdc04f8eab98831360f31a891ac89a2",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q041",
+      "question": "На работе просят документ со СНИЛС, где взять подтверждение?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_snils_proof"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_snils_proof"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_snils_proof",
+          "urls": [
+            "/?handbook=doc_snils_proof",
+            "https://es.pfrf.ru/serviceSnilsDuplicate/",
+            "https://sfr.gov.ru/grazhdanam/personificirovannyj_uchet/registraciya_i_oformlenie_snils/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "9d18135a037589c88db1b22c855f347e2993861d13c0b9035ec662e5eeba3c5a",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q042",
+      "question": "Нужен мой налоговый номер, где посмотреть ИНН?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_inn_lookup"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_inn_lookup"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_inn_lookup",
+          "urls": [
+            "/?handbook=doc_inn_lookup",
+            "https://service.nalog.ru/inn.do",
+            "https://service.nalog.ru/zpufl/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "27b0fbabe51164b6fe8fcaaa7222c6d7428ceeed10ba06132bb03fb725523bd5",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q043",
+      "question": "В 2026 нужна бумага с ИНН, можно выписку?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_inn_proof"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_inn_proof"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_inn_proof",
+          "urls": [
+            "/?handbook=doc_inn_proof",
+            "https://service.nalog.ru/inn.do",
+            "https://www.nalog.gov.ru/new2026/",
+            "https://www.nalog.gov.ru/rn77/related_activities/accounting/egrn/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "1de53166bddcbf9ecb797e2ce04817afe4241215af5d60f4d3db1f3381031fb2",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q044",
+      "question": "Живу временно в другом городе, как оформить регистрацию по месту пребывания?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_reg_stay"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_reg_stay"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_reg_stay",
+          "urls": [
+            "/?handbook=doc_reg_stay",
+            "https://www.gosuslugi.ru/600124/1/form",
+            "https://publication.pravo.gov.ru/document/0001202604170025"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "3b90d4d4263669248e7f41707b102c9f0284e3dbce78066e9f2c30b437f906fc",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q045",
+      "question": "Общежитие дало место, кто оформляет регистрацию?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_reg_dorm"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_reg_dorm"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_reg_dorm",
+          "urls": [
+            "/?handbook=doc_reg_dorm",
+            "https://government.ru/docs/all/15330/",
+            "https://www.gosuslugi.ru/600124/1/form",
+            "https://publication.pravo.gov.ru/document/0001202604170025"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "bfee234dfdab07edd903a8ad90e1a877bdd02852578fd945c18ddafd7ec227aa",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q046",
+      "question": "Аттестат школы потерялся, кто выдаёт дубликат?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_edu_school"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_edu_school"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_edu_school",
+          "urls": [
+            "/?handbook=doc_edu_school",
+            "https://docs.edu.gov.ru/document/cb801fa9f228b82d91e6e2455511c046/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "Напиши туда заявление"
+          ],
+          "source_text_sha256": "0fb38e5fbf65fbc6a9c5a8e6f52393938a33feb6dec881d3e9cfecb844b087ff",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q047",
+      "question": "Затопило диплом колледжа, куда идти за новым?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_edu_college"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_edu_college"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_edu_college",
+          "urls": [
+            "/?handbook=doc_edu_college",
+            "https://publication.pravo.gov.ru/Document/View/0001202211250010"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "29148bb5296048596a62f7b8a4de58fbc832e4c75f3718df37fc7f53f38f01f1",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q048",
+      "question": "Диплом университета потерян, как восстановить документ?",
+      "tags": [
+        "documents"
+      ],
+      "intent": "answer",
+      "topic": "documents",
+      "expected_material_groups": [
+        [
+          "doc_edu_university"
+        ]
+      ],
+      "ideal_material_ids": [
+        "doc_edu_university"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "doc_edu_university",
+          "urls": [
+            "/?handbook=doc_edu_university",
+            "https://publication.pravo.gov.ru/Document/View/0001202108250039"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "1c0b1ed9e7a937ba988a4515ed95aeae2ec563c61c47aa0b0f299370dd603284",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q049",
+      "question": "Никогда не работал, что писать в резюме вместо опыта?",
+      "tags": [
+        "work",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "resume_first"
+        ]
+      ],
+      "ideal_material_ids": [
+        "resume_first"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "resume_first",
+          "urls": [
+            "/?handbook=resume_first"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "2e20e7601e219b3bb9c76a0bb3e91136b5f86fb75df1e52482815fe85233bb0b",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q050",
+      "question": "Не ищу работу, хочу понять пункты своего трудового договора",
+      "tags": [
+        "work",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "job_contract"
+        ]
+      ],
+      "ideal_material_ids": [
+        "job_contract"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "job_contract",
+          "urls": [
+            "/?handbook=job_contract"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "9553704f313b7495a99022b5fb34fbc72b6831830a878d599a37e4278eeb23fa",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q051",
+      "question": "Какие проверенные документы подготовить для оформления на работу?",
+      "tags": [
+        "work"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "employment_docs"
+        ]
+      ],
+      "ideal_material_ids": [
+        "employment_docs"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "employment_docs",
+          "urls": [
+            "/?handbook=employment_docs",
+            "https://www.consultant.ru/document/cons_doc_LAW_34683/b618fae23b33471d3e7e3e373dd93fcced4356b8/"
+          ],
+          "qualifier_units": [
+            "Это не полный список. Пока могу показать только проверенные пункты."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "7405ee64e51b1bf65e60ac08b0326445455e7b56502c9d8031fc86ba67192305",
+          "publication_status": "partial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q052",
+      "question": "Мне семнадцать, как понять подходит ли вакансия несовершеннолетнему?",
+      "tags": [
+        "work",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "job_minor"
+        ]
+      ],
+      "ideal_material_ids": [
+        "job_minor"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "job_minor",
+          "urls": [
+            "/?handbook=job_minor"
+          ],
+          "qualifier_units": [
+            "Полный перечень условий, согласий и документов для разных возрастов ещё проверяется.",
+            "Наличие вакансии не подтверждает, что она подходит несовершеннолетнему."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "b79171be703a42ab8dd5088f4642ce3061492477db59bc0bd268254bc4848845",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q053",
+      "question": "Хочу найти вакансии и подготовить резюме без опыта",
+      "tags": [
+        "work",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "resume_first"
+        ]
+      ],
+      "ideal_material_ids": [
+        "resume_first"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "resume_first",
+          "urls": [
+            "/?handbook=resume_first"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "2e20e7601e219b3bb9c76a0bb3e91136b5f86fb75df1e52482815fe85233bb0b",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [
+        "app_work"
+      ],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q054",
+      "question": "Как совместить смены на работе и занятия в колледже?",
+      "tags": [
+        "work"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "job_study"
+        ]
+      ],
+      "ideal_material_ids": [
+        "job_study"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "job_study",
+          "urls": [
+            "/?handbook=job_study"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "5e9111409786caad3d52c6c6e747f19733b364492cfa41fdb9be008a7f6cb4ee",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q055",
+      "question": "Можно включить учебные проекты в портфолио?",
+      "tags": [
+        "work"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "portfolio"
+        ]
+      ],
+      "ideal_material_ids": [
+        "portfolio"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "portfolio",
+          "urls": [
+            "/?handbook=portfolio"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "88157c9c0a76353d2ba595c32dbf66911bc1c0b6602a9a009ae34d9016d6555d",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q056",
+      "question": "Что написать работодателю в коротком сопроводительном письме?",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "cover_letter"
+        ]
+      ],
+      "ideal_material_ids": [
+        "cover_letter"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "cover_letter",
+          "urls": [
+            "/?handbook=cover_letter"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "cd285e793b1bb20a4c6d6be41a91e806d957886862bc22e7783182e71ef3b1b0",
+          "publication_status": "editorial"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q057",
+      "question": "Как подать заявление в колледж после девятого класса?",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "college9"
+        ]
+      ],
+      "ideal_material_ids": [
+        "college9"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "college9",
+          "urls": [
+            "/?handbook=college9",
+            "https://www.gosuslugi.ru/10171/1/form",
+            "https://docs.edu.gov.ru/document/f188a6329bb376dfc57e887a04feb6ad/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "e0e2a6eccfd4516d30dbd80e15d2f0bfda6b327ca6a8b75e83ec7d763a24fe14",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q058",
+      "question": "Закончил 11 классов и хочу поступить в колледж",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "college11"
+        ]
+      ],
+      "ideal_material_ids": [
+        "college11"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "college11",
+          "urls": [
+            "/?handbook=college11",
+            "https://www.gosuslugi.ru/10171/1/form",
+            "https://docs.edu.gov.ru/document/f188a6329bb376dfc57e887a04feb6ad/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "32bc6009018de040dbe8761e90f946f1bf3e6350634bdc34c2a7572d380b661d",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q059",
+      "question": "Поступаю в университет после колледжа, где посмотреть правила?",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "university"
+        ]
+      ],
+      "ideal_material_ids": [
+        "university"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "university",
+          "urls": [
+            "/?handbook=university",
+            "https://www.gosuslugi.ru/vuzonline",
+            "https://publication.pravo.gov.ru/document/0001202411290031"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "aaf32e22a74a9657385cce6ed32b6157c54785c7518b3661eed71422ae861ae4",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q060",
+      "question": "Переезжаю учиться: как получить место в общаге?",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "dorm"
+        ]
+      ],
+      "ideal_material_ids": [
+        "dorm"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "dorm",
+          "urls": [
+            "/?handbook=dorm",
+            "https://www.minobrnauki.gov.ru/open_ministry/reception/faq/",
+            "https://publication.pravo.gov.ru/document/0001202602200055"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "105c7f2c3795f1377f0ecdf26e14ebac7a121967b41734ee3cf131c5e797c2df",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q061",
+      "question": "Какая поддержка во время учёбы есть для сироты?",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "study_provision"
+        ]
+      ],
+      "ideal_material_ids": [
+        "study_provision"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "study_provision",
+          "urls": [
+            "/?handbook=study_provision",
+            "https://edu.gov.ru/press/5479/vladimir-putin-podpisal-zakon-o-socialnoy-podderzhke-detey-sirot/",
+            "https://publication.pravo.gov.ru/document/0001202608040018"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "f52197ab0e409ff761faa5c0fdc39d2a4f1fd07522a870a8ee659ab69b22cbae",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q062",
+      "question": "Сирота, хочу оформить социальную стипендию",
+      "tags": [
+        "study"
+      ],
+      "intent": "answer",
+      "topic": "study",
+      "expected_material_groups": [
+        [
+          "social_scholarship"
+        ]
+      ],
+      "ideal_material_ids": [
+        "social_scholarship"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "social_scholarship",
+          "urls": [
+            "/?handbook=social_scholarship",
+            "https://www.minobrnauki.gov.ru/open_ministry/reception/faq/",
+            "https://publication.pravo.gov.ru/document/0001202608040018"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "d159b9e20d8f51cd110fa3bf84aea2d8d43a08d7ca201a00190632d6b8ec8660",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q063",
+      "question": "Квота в вуз означает, что меня точно зачислят без конкурса?",
+      "tags": [
+        "benefits",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "benefits",
+      "expected_material_groups": [
+        [
+          "bq_quota_contest"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_quota_contest"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_quota_contest",
+          "urls": [
+            "/?handbook=bq_quota_contest",
+            "https://www.gosuslugi.ru/vuzonline"
+          ],
+          "qualifier_units": [
+            "сама по себе квота не гарантирует зачисление",
+            "пройти конкурс на места в пределах квоты"
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "fe763762febfdc3d5de208668419b875e86098c29d01a0aa0aebfdaff8756cf8",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q064",
+      "question": "После 18 учусь очно, до какого возраста идёт пенсия по потере кормильца?",
+      "tags": [
+        "benefits"
+      ],
+      "intent": "answer",
+      "topic": "benefits",
+      "expected_material_groups": [
+        [
+          "bq_pension_study"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_pension_study"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_pension_study",
+          "urls": [
+            "/?handbook=bq_pension_study",
+            "https://sfr.gov.ru/grazhdanam/pensionnoe_obespechenie/strahovaya_pensiya_po_sluchayu_poteri_kormilca/pravo/"
+          ],
+          "qualifier_units": [
+            "важна очная форма и возраст до 23 лет",
+            "После окончания или прекращения обучения это основание меняется."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "a563c3fe158a1b566db256a1ad9e51a4baeef2834688e750a0305545cf4e97d4",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q065",
+      "question": "Где бесплатно проконсультироваться с юристом по жилищному спору?",
+      "tags": [
+        "help"
+      ],
+      "intent": "answer",
+      "topic": "help",
+      "expected_material_groups": [
+        [
+          "bq_legal_steps"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_legal_steps"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_legal_steps",
+          "urls": [
+            "/?handbook=bq_legal_steps",
+            "https://minjust.gov.ru/ru/pages/besplatnaya-yuridicheskaya-pomosh/"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "8cb0e168eea450ee60129b7c03a4ee89931a03daa512b3fe094000e39c0d28ba",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q066",
+      "question": "Как через Госуслуги записаться на приём к врачу?",
+      "tags": [
+        "benefits"
+      ],
+      "intent": "answer",
+      "topic": "benefits",
+      "expected_material_groups": [
+        [
+          "bq_medical_appointment"
+        ]
+      ],
+      "ideal_material_ids": [
+        "bq_medical_appointment"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "bq_medical_appointment",
+          "urls": [
+            "/?handbook=bq_medical_appointment",
+            "https://www.gosuslugi.ru/600204/1/form"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "fabd746ecf8e9d1923457642faef3ddca52d470e247fbe42e7bb85e28ae5323f",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q067",
+      "question": "Ищу съёмную комнату, а ещё потерял паспорт",
+      "tags": [
+        "housing",
+        "multi_topic"
+      ],
+      "intent": "answer",
+      "topic": "housing",
+      "expected_material_groups": [
+        [
+          "hq_rent_view"
+        ],
+        [
+          "doc_passport_q3"
+        ]
+      ],
+      "ideal_material_ids": [
+        "hq_rent_view",
+        "doc_passport_q3"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "hq_rent_view",
+          "urls": [
+            "/?handbook=hq_rent_view",
+            "https://www.gosuslugi.ru/600359/1/form",
+            "https://www.consultant.ru/document/cons_doc_LAW_9027/"
+          ],
+          "qualifier_units": [
+            "В выписке, заказанной посторонним, персональные данные владельца могут быть скрыты."
+          ],
+          "first_action_units": [],
+          "source_text_sha256": "9aa4718bb4d3d49f0ff57975056339b2a599cd2834cdecf3dd6d79f2742e8b2a",
+          "publication_status": "reviewed_reference"
+        },
+        {
+          "material_id": "doc_passport_q3",
+          "urls": [
+            "/?handbook=doc_passport_q3",
+            "https://www.gosuslugi.ru/landing/document-recovery",
+            "https://publication.pravo.gov.ru/document/0001202312290097"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [
+            "обратись в подразделение МВД."
+          ],
+          "source_text_sha256": "3d4e80f49ebfef1ebf63bcfbbae166335590f088bad73ed991b621a1f1f579f8",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [
+        "app_rental"
+      ],
+      "forbidden_resources": [
+        "app_help",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q068",
+      "question": "Нужно резюме без опыта и социальная стипендия во время учёбы",
+      "tags": [
+        "work",
+        "multi_topic",
+        "negation"
+      ],
+      "intent": "answer",
+      "topic": "work",
+      "expected_material_groups": [
+        [
+          "resume_first"
+        ],
+        [
+          "social_scholarship"
+        ]
+      ],
+      "ideal_material_ids": [
+        "resume_first",
+        "social_scholarship"
+      ],
+      "expected_sources": [
+        {
+          "material_id": "resume_first",
+          "urls": [
+            "/?handbook=resume_first"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "2e20e7601e219b3bb9c76a0bb3e91136b5f86fb75df1e52482815fe85233bb0b",
+          "publication_status": "editorial"
+        },
+        {
+          "material_id": "social_scholarship",
+          "urls": [
+            "/?handbook=social_scholarship",
+            "https://www.minobrnauki.gov.ru/open_ministry/reception/faq/",
+            "https://publication.pravo.gov.ru/document/0001202608040018"
+          ],
+          "qualifier_units": [],
+          "first_action_units": [],
+          "source_text_sha256": "d159b9e20d8f51cd110fa3bf84aea2d8d43a08d7ca201a00190632d6b8ec8660",
+          "publication_status": "prepared"
+        }
+      ],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q069",
+      "question": "Помоги с документами",
+      "tags": [
+        "documents"
+      ],
+      "intent": "clarify",
+      "topic": "documents",
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q070",
+      "question": "Нужна помощь с жильём",
+      "tags": [
+        "housing"
+      ],
+      "intent": "clarify",
+      "topic": "housing",
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q071",
+      "question": "Напиши рецепт тирамису без яиц",
+      "tags": [
+        "negation"
+      ],
+      "intent": "unsupported",
+      "topic": null,
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q072",
+      "question": "Как починить видеокарту в компьютере?",
+      "tags": [],
+      "intent": "unsupported",
+      "topic": null,
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q073",
+      "question": "Хочу научиться программировать на Rust, напиши код",
+      "tags": [],
+      "intent": "unsupported",
+      "topic": null,
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    },
+    {
+      "id": "q074",
+      "question": "Предскажи курс биткоина на следующую неделю",
+      "tags": [],
+      "intent": "unsupported",
+      "topic": null,
+      "expected_material_groups": [],
+      "ideal_material_ids": [],
+      "expected_sources": [],
+      "required_resources": [],
+      "forbidden_resources": [
+        "app_help",
+        "app_rental",
+        "app_work"
+      ],
+      "forbidden_material_ids": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Preserve exact submitted bytes so manifest hashes also match a Git checkout.
+* -text
+
+# Preserve the exact bytes captured from production containers.
+project/** -text
+production-snapshot/** -text

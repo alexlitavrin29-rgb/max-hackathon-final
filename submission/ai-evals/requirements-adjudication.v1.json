@@ -1,0 +1,42 @@
+{
+  "case": "q001",
+  "frozen_corpus_unchanged": true,
+  "reason": "Root confirmed exact user requirement: «Для ранее согласованного сценария положена ли мне квартира сохрани предложение поиска жилья». q001 is a paraphrase of personal state-housing eligibility, so preserving app_rental is required. This correction is documented after scoring rather than editing the frozen corpus.",
+  "clarified_required_resources": [
+    "app_rental"
+  ],
+  "clarified_forbidden_resources": [
+    "app_work",
+    "app_help"
+  ],
+  "results": {
+    "baseline": {
+      "q001_actual_resources": [
+        "app_rental"
+      ],
+      "clarified_q001_pass": true,
+      "required_present": {
+        "passed": 4,
+        "total": 6
+      },
+      "forbidden_absent": {
+        "passed": 36,
+        "total": 74
+      }
+    },
+    "candidate": {
+      "q001_actual_resources": [
+        "app_rental"
+      ],
+      "clarified_q001_pass": true,
+      "required_present": {
+        "passed": 6,
+        "total": 6
+      },
+      "forbidden_absent": {
+        "passed": 74,
+        "total": 74
+      }
+    }
+  }
+}

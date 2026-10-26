@@ -1,0 +1,7 @@
+{
+  "name": "tochka-answer-eval-stand",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local snapshot replay only; no production dependencies or provider calls",
+  "devDependencies": { "promptfoo": "0.124.1" }
+}

@@ -1,0 +1,5755 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Точка опоры — API мини-приложения и каталога помощи",
+    "version": "acceptance-2026-10-26",
+    "description": "Публичный каталог помощи и отдельные сеансы MAX. Редактор не входит в публичный API. Тексты и доступность услуг требуют уточнения у организации. Источники вакансий и жилья могут быть недоступны."
+  },
+  "paths": {
+    "/api/help/search": {
+      "get": {
+        "summary": "Search",
+        "operationId": "search_api_help_search_get",
+        "parameters": [
+          {
+            "name": "place",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "title": "Place"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 150,
+              "default": "",
+              "title": "Region"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "choices",
+                    "total"
+                  ],
+                  "properties": {
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Place"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/help/summary": {
+      "get": {
+        "summary": "Summary",
+        "operationId": "summary_api_help_summary_get",
+        "parameters": [
+          {
+            "name": "place",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "title": "Place"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 150,
+              "default": "",
+              "title": "Region"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "place",
+                    "city_total",
+                    "region_total",
+                    "categories"
+                  ],
+                  "properties": {
+                    "place": {
+                      "$ref": "#/components/schemas/Place"
+                    },
+                    "city_total": {
+                      "type": "integer"
+                    },
+                    "region_total": {
+                      "type": "integer"
+                    },
+                    "categories": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Место не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Нужны город и регион",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/help/points": {
+      "get": {
+        "summary": "Points",
+        "operationId": "points_api_help_points_get",
+        "parameters": [
+          {
+            "name": "place",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150,
+              "title": "Place"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 150,
+              "default": "",
+              "title": "Region"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Category"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 4,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "auto",
+              "title": "Scope"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "place",
+                    "scope",
+                    "total",
+                    "offset",
+                    "items",
+                    "next_offset"
+                  ],
+                  "properties": {
+                    "place": {
+                      "$ref": "#/components/schemas/Place"
+                    },
+                    "scope": {
+                      "type": "string"
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "offset": {
+                      "type": "integer"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/HelpPoint"
+                      }
+                    },
+                    "next_offset": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Недопустимый параметр",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Место не найдено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Нужно уточнение",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/help/points/{identifier}": {
+      "get": {
+        "summary": "Point",
+        "operationId": "point_api_help_points__identifier__get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpPoint"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Карточка не найдена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/planner/ai/latest": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Latest Proposal",
+        "operationId": "latest_proposal_api_planner_ai_latest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/ai/draft-plan": {
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Draft Plan",
+        "operationId": "draft_plan_api_planner_ai_draft_plan_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIProposal"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/ai/find-help-route": {
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Find Help Route",
+        "operationId": "find_help_route_api_planner_ai_find_help_route_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AIProposal"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/routes": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Help Routes",
+        "operationId": "help_routes_api_planner_routes_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelpRoutesResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/tasks/{identifier}/links": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Task Links",
+        "operationId": "task_links_api_planner_tasks__identifier__links_get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskLinksResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/timezones": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Timezones",
+        "operationId": "timezones_api_planner_timezones_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TimezonesResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/goals": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "List Goals",
+        "operationId": "list_goals_api_planner_goals_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "After"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Create Goal",
+        "operationId": "create_goal_api_planner_goals_post",
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateGoal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/goals/{identifier}": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Get Goal",
+        "operationId": "get_goal_api_planner_goals__identifier__get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Update Goal",
+        "operationId": "update_goal_api_planner_goals__identifier__patch",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateGoal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoalResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Delete Goal",
+        "operationId": "delete_goal_api_planner_goals__identifier__delete",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpectedVersion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletedResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/tasks": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "List Tasks",
+        "operationId": "list_tasks_api_planner_tasks_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "After"
+            }
+          },
+          {
+            "name": "goal_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Goal Id"
+            }
+          },
+          {
+            "name": "view",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "upcoming",
+                    "overdue",
+                    "undated",
+                    "completed"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "View"
+            }
+          },
+          {
+            "name": "as_of",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "As Of"
+            }
+          },
+          {
+            "name": "calendar_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Calendar Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Create Task",
+        "operationId": "create_task_api_planner_tasks_post",
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTask"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/tasks/{identifier}": {
+      "get": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Get Task",
+        "operationId": "get_task_api_planner_tasks__identifier__get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Update Task",
+        "operationId": "update_task_api_planner_tasks__identifier__patch",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTask"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Delete Task",
+        "operationId": "delete_task_api_planner_tasks__identifier__delete",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpectedVersion"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletedResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/commit": {
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Commit Plan",
+        "operationId": "commit_plan_api_planner_commit_post",
+        "parameters": [
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommitPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommitResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/goals/{identifier}/edit-plan": {
+      "post": {
+        "tags": [
+          "Planner v1"
+        ],
+        "summary": "Edit Plan",
+        "operationId": "edit_plan_api_planner_goals__identifier__edit_plan_post",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Identifier"
+            }
+          },
+          {
+            "name": "idempotency-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._:-]{1,128}$",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditPlan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommitResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "MAX session expired or invalid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Disabled planner or missing/foreign entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency, ID, version or nonempty-goal conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid shape, time, timezone or reminder",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Foreign Origin on mutation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Mutation body exceeds 24000 bytes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlannerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/planner/draft": {
+      "get": {
+        "tags": [
+          "Planner drafts"
+        ],
+        "summary": "Get Draft",
+        "operationId": "get_draft_api_planner_draft_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Planner drafts"
+        ],
+        "summary": "Put Draft",
+        "operationId": "put_draft_api_planner_draft_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutDraft"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Planner drafts"
+        ],
+        "summary": "Delete Draft",
+        "operationId": "delete_draft_api_planner_draft_delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteDraft"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/handbook": {
+      "get": {
+        "tags": [
+          "Handbook"
+        ],
+        "summary": "Catalog",
+        "operationId": "catalog_api_handbook_get",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Category"
+            }
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Parent"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 240,
+              "default": "",
+              "title": "Q"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/handbook/{identifier}": {
+      "get": {
+        "tags": [
+          "Handbook"
+        ],
+        "summary": "Detail",
+        "operationId": "detail_api_handbook__identifier__get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/handbook/{identifier}/favorite": {
+      "post": {
+        "tags": [
+          "Handbook"
+        ],
+        "summary": "Favorite",
+        "operationId": "favorite_api_handbook__identifier__favorite_post",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Favorite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/resume": {
+      "get": {
+        "tags": [
+          "Resume"
+        ],
+        "summary": "Get Resume",
+        "operationId": "get_resume_api_resume_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResumeEnvelope"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Resume"
+        ],
+        "summary": "Put Resume",
+        "operationId": "put_resume_api_resume_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutResume"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResumeEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/resume/pdf": {
+      "get": {
+        "tags": [
+          "Resume"
+        ],
+        "summary": "Get Pdf",
+        "operationId": "get_pdf_api_resume_pdf_get",
+        "responses": {
+          "200": {
+            "description": "Saved resume PDF with embedded Cyrillic font",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/housing": {
+      "get": {
+        "tags": [
+          "Housing"
+        ],
+        "summary": "Get Housing",
+        "operationId": "get_housing_api_housing_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HousingEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Хранилище статуса недоступно",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Housing"
+        ],
+        "summary": "Put Housing",
+        "operationId": "put_housing_api_housing_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutHousing"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HousingEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Хранилище статуса недоступно",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Статус изменён в другом окне",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/career": {
+      "get": {
+        "tags": [
+          "Career"
+        ],
+        "summary": "Get Career",
+        "operationId": "get_career_api_career_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Хранилище статуса недоступно",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Career"
+        ],
+        "summary": "Put Career",
+        "operationId": "put_career_api_career_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PutCareer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Хранилище статуса недоступно",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Статус изменён в другом окне",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status"
+                  ],
+                  "properties": {
+                    "status": {
+                      "const": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "База данных недоступна или проверка превысила 2 секунды",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/info": {
+      "get": {
+        "summary": "Info",
+        "operationId": "info_api_info_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "preview",
+                    "bot_name"
+                  ],
+                  "properties": {
+                    "preview": {
+                      "type": "boolean"
+                    },
+                    "bot_name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/session": {
+      "post": {
+        "summary": "Launch",
+        "operationId": "launch_api_session_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Launch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "session"
+                  ],
+                  "properties": {
+                    "session": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Неверные или просроченные init_data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Повторный запуск раньше 5 секунд",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Лимит 200 сеансов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/api/favorites": {
+      "get": {
+        "summary": "Favorites",
+        "operationId": "favorites_api_favorites_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "cards"
+                  ],
+                  "properties": {
+                    "cards": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Card"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Favorite",
+        "operationId": "favorite_api_favorites_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FavoriteAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "cards"
+                  ],
+                  "properties": {
+                    "cards": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Card"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Материал снят",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Карточка не открывалась в этом сеансе",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/material": {
+      "post": {
+        "summary": "Open Material",
+        "operationId": "open_material_api_material_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MaterialAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "card",
+                    "saved"
+                  ],
+                  "properties": {
+                    "card": {
+                      "$ref": "#/components/schemas/Card"
+                    },
+                    "saved": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Материал недоступен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ],
+        "description": "save=false только открывает ответ. save=true сохраняет в Моё. Разрешены только материалы явного реестра saved_answers.json."
+      }
+    },
+    "/api/account": {
+      "delete": {
+        "summary": "Delete Account",
+        "operationId": "delete_account_api_account_delete",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "deleted"
+                  ],
+                  "properties": {
+                    "deleted": {
+                      "type": "boolean",
+                      "const": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ]
+      }
+    },
+    "/api/action": {
+      "post": {
+        "summary": "Action",
+        "operationId": "action_api_action_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Action"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Нужно ровно одно действие и выбранный раздел",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Сеанс завершён",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Устаревшая кнопка или тот же Idempotency-Key с другим действием",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Действие уже идёт или интервал меньше 0,4 с",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Очередь, тайм-аут или ошибка обработки",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Чужой Origin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Тело больше 24000 байт",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "MaxSession": []
+          }
+        ],
+        "description": "Ровно одно: section, непустой text или payload из последнего ответа. Минимум 0,4 с между вызовами. Очередь до 5 с, обработка до 120 с. Ошибка внешнего источника может возвращаться как уведомление внутри HTTP 200."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AIProposal": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Text"
+          },
+          "situation": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "basic_needs"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Situation"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "question_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Question Id"
+          },
+          "answer": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 500,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Answer"
+          },
+          "history": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "maxItems": 8,
+            "title": "History"
+          },
+          "selected_material_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Selected Material Ids"
+          },
+          "pending_topics": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Pending Topics"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "title": "AIProposal"
+      },
+      "Action": {
+        "properties": {
+          "section": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "home",
+                  "work",
+                  "rental",
+                  "help"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section"
+          },
+          "text": {
+            "type": "string",
+            "maxLength": 2500,
+            "title": "Text",
+            "default": ""
+          },
+          "payload": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Payload"
+          }
+        },
+        "type": "object",
+        "title": "Action"
+      },
+      "CareerDocument": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "searching",
+              "resume",
+              "interview",
+              "employed"
+            ],
+            "title": "Status"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "version",
+          "updated_at"
+        ],
+        "title": "CareerDocument"
+      },
+      "CareerEnvelope": {
+        "properties": {
+          "career": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CareerDocument"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "career"
+        ],
+        "title": "CareerEnvelope"
+      },
+      "CommitPlan": {
+        "properties": {
+          "goal": {
+            "$ref": "#/components/schemas/CreateGoal"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/CommitTask"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Tasks"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PlanContext"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confirmed": {
+            "type": "boolean",
+            "const": true,
+            "title": "Confirmed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "goal",
+          "tasks",
+          "confirmed"
+        ],
+        "title": "CommitPlan"
+      },
+      "CommitResponse": {
+        "properties": {
+          "goal": {
+            "$ref": "#/components/schemas/GoalDocument"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/TaskDocument"
+            },
+            "type": "array",
+            "title": "Tasks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "goal",
+          "tasks"
+        ],
+        "title": "CommitResponse"
+      },
+      "CommitTask": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Material Ids"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ],
+            "title": "Status",
+            "default": "not_started"
+          },
+          "due_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due At"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
+          },
+          "timezone_confirmed": {
+            "type": "boolean",
+            "title": "Timezone Confirmed",
+            "default": false
+          },
+          "remind_before_minutes": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  60
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remind Before Minutes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "title": "CommitTask"
+      },
+      "ContextDocument": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Question"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Material Ids"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Revision"
+          },
+          "required_resources": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "app_work",
+                "app_rental",
+                "app_help"
+              ]
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Required Resources"
+          },
+          "policy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Policy"
+          },
+          "information": {
+            "$ref": "#/components/schemas/InformationDocument"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question",
+          "material_ids",
+          "revision",
+          "information"
+        ],
+        "title": "ContextDocument"
+      },
+      "CreateGoal": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Title"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "title": "CreateGoal"
+      },
+      "CreateTask": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Material Ids"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ],
+            "title": "Status",
+            "default": "not_started"
+          },
+          "due_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due At"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
+          },
+          "timezone_confirmed": {
+            "type": "boolean",
+            "title": "Timezone Confirmed",
+            "default": false
+          },
+          "remind_before_minutes": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  60
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remind Before Minutes"
+          },
+          "goal_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goal Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "title": "CreateTask"
+      },
+      "DeleteDraft": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version"
+        ],
+        "title": "DeleteDraft"
+      },
+      "DeletedResponse": {
+        "properties": {
+          "deleted": {
+            "type": "boolean",
+            "const": true,
+            "title": "Deleted"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "deleted",
+          "id"
+        ],
+        "title": "DeletedResponse"
+      },
+      "EditPlan": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/EditPlanTask"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Tasks"
+          },
+          "removed_tasks": {
+            "items": {
+              "$ref": "#/components/schemas/RemovedTask"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Removed Tasks"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "const": true,
+            "title": "Confirmed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version",
+          "title",
+          "tasks",
+          "confirmed"
+        ],
+        "title": "EditPlan"
+      },
+      "EditPlanTask": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Material Ids"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ],
+            "title": "Status",
+            "default": "not_started"
+          },
+          "due_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due At"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
+          },
+          "timezone_confirmed": {
+            "type": "boolean",
+            "title": "Timezone Confirmed",
+            "default": false
+          },
+          "remind_before_minutes": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  60
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remind Before Minutes"
+          },
+          "expected_version": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expected Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "title"
+        ],
+        "title": "EditPlanTask"
+      },
+      "ExpectedVersion": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version"
+        ],
+        "title": "ExpectedVersion"
+      },
+      "Favorite": {
+        "properties": {
+          "saved": {
+            "type": "boolean",
+            "title": "Saved"
+          },
+          "content_hash": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content Hash"
+          },
+          "replace": {
+            "type": "boolean",
+            "title": "Replace",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "saved"
+        ],
+        "title": "Favorite"
+      },
+      "FavoriteAction": {
+        "properties": {
+          "card_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Card Id"
+          },
+          "saved": {
+            "type": "boolean",
+            "title": "Saved"
+          }
+        },
+        "type": "object",
+        "required": [
+          "card_id",
+          "saved"
+        ],
+        "title": "FavoriteAction"
+      },
+      "GoalDocument": {
+        "properties": {
+          "context": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ContextDocument"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "version",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "GoalDocument"
+      },
+      "GoalPage": {
+        "properties": {
+          "goals": {
+            "items": {
+              "$ref": "#/components/schemas/GoalDocument"
+            },
+            "type": "array",
+            "title": "Goals"
+          },
+          "next_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After"
+          }
+        },
+        "type": "object",
+        "required": [
+          "goals",
+          "next_after"
+        ],
+        "title": "GoalPage"
+      },
+      "GoalResponse": {
+        "properties": {
+          "goal": {
+            "$ref": "#/components/schemas/GoalDocument"
+          }
+        },
+        "type": "object",
+        "required": [
+          "goal"
+        ],
+        "title": "GoalResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HelpRouteDocument": {
+        "properties": {
+          "alias": {
+            "type": "string",
+            "title": "Alias"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "available": {
+            "type": "boolean",
+            "title": "Available"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "manual_path": {
+            "type": "string",
+            "title": "Manual Path"
+          }
+        },
+        "type": "object",
+        "required": [
+          "alias",
+          "title",
+          "available",
+          "url",
+          "manual_path"
+        ],
+        "title": "HelpRouteDocument"
+      },
+      "HelpRoutesResponse": {
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "title": "Revision"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/HelpRouteDocument"
+            },
+            "type": "array",
+            "title": "Routes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "revision",
+          "routes"
+        ],
+        "title": "HelpRoutesResponse"
+      },
+      "HousingDocument": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "not_in_list",
+              "in_list",
+              "application_sent",
+              "offered",
+              "received",
+              "social_rent"
+            ],
+            "title": "Status"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "version",
+          "updated_at"
+        ],
+        "title": "HousingDocument"
+      },
+      "HousingEnvelope": {
+        "properties": {
+          "housing": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/HousingDocument"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "housing"
+        ],
+        "title": "HousingEnvelope"
+      },
+      "InformationDetail": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/InformationSource"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "sources",
+          "title"
+        ],
+        "title": "InformationDetail"
+      },
+      "InformationDocument": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/InformationSource"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "note": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Note"
+          },
+          "intro": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Intro"
+          },
+          "points": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/InformationPoint"
+                },
+                "type": "array",
+                "maxItems": 5
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Points"
+          },
+          "details": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/InformationDetail"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Details"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "normal",
+              "urgent"
+            ],
+            "title": "Priority",
+            "default": "normal"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "sources"
+        ],
+        "title": "InformationDocument"
+      },
+      "InformationPoint": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/InformationSource"
+            },
+            "type": "array",
+            "title": "Sources"
+          }
+        },
+        "type": "object",
+        "required": [
+          "text",
+          "sources"
+        ],
+        "title": "InformationPoint"
+      },
+      "InformationSource": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "anchors": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "maxItems": 12
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Anchors"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "url",
+          "id"
+        ],
+        "title": "InformationSource"
+      },
+      "Launch": {
+        "properties": {
+          "init_data": {
+            "type": "string",
+            "maxLength": 16000,
+            "title": "Init Data",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "Launch"
+      },
+      "MaterialAction": {
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$",
+            "title": "Node Id"
+          },
+          "save": {
+            "type": "boolean",
+            "title": "Save",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "node_id"
+        ],
+        "title": "MaterialAction"
+      },
+      "MaterialLink": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "url"
+        ],
+        "title": "MaterialLink"
+      },
+      "PlanContext": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Question"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Material Ids"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Revision"
+          },
+          "required_resources": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "app_work",
+                "app_rental",
+                "app_help"
+              ]
+            },
+            "type": "array",
+            "maxItems": 3,
+            "title": "Required Resources"
+          },
+          "policy": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Policy"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question",
+          "material_ids",
+          "revision"
+        ],
+        "title": "PlanContext"
+      },
+      "PlannerError": {
+        "properties": {
+          "detail": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PlannerErrorCode"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "title": "PlannerError"
+      },
+      "PlannerErrorCode": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "title": "PlannerErrorCode"
+      },
+      "PutCareer": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "searching",
+              "resume",
+              "interview",
+              "employed"
+            ],
+            "title": "Status"
+          },
+          "expected_version": {
+            "type": "integer",
+            "maximum": 9.223372036854776e+18,
+            "minimum": 0.0,
+            "title": "Expected Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "expected_version"
+        ],
+        "title": "PutCareer"
+      },
+      "PutDraft": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Version"
+          },
+          "state": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "State"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version",
+          "state"
+        ],
+        "title": "PutDraft"
+      },
+      "PutHousing": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "not_in_list",
+              "in_list",
+              "application_sent",
+              "offered",
+              "received",
+              "social_rent"
+            ],
+            "title": "Status"
+          },
+          "expected_version": {
+            "type": "integer",
+            "maximum": 9.223372036854776e+18,
+            "minimum": 0.0,
+            "title": "Expected Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "expected_version"
+        ],
+        "title": "PutHousing"
+      },
+      "PutResume": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "maximum": 9.223372036854776e+18,
+            "minimum": 0.0,
+            "title": "Expected Version"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ResumeState"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version",
+          "state"
+        ],
+        "title": "PutResume"
+      },
+      "RemovedTask": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version",
+          "id"
+        ],
+        "title": "RemovedTask"
+      },
+      "ResumeDocument": {
+        "properties": {
+          "version": {
+            "type": "integer",
+            "maximum": 9.223372036854776e+18,
+            "minimum": 1.0,
+            "title": "Version"
+          },
+          "state": {
+            "$ref": "#/components/schemas/ResumeState"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "version",
+          "state",
+          "updated_at"
+        ],
+        "title": "ResumeDocument"
+      },
+      "ResumeEnvelope": {
+        "properties": {
+          "resume": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResumeDocument"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "resume"
+        ],
+        "title": "ResumeEnvelope"
+      },
+      "ResumeState": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 240,
+            "title": "Name",
+            "default": ""
+          },
+          "contacts": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Contacts",
+            "default": ""
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 240,
+            "title": "City",
+            "default": ""
+          },
+          "desired_role": {
+            "type": "string",
+            "maxLength": 240,
+            "title": "Desired Role",
+            "default": ""
+          },
+          "education": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Education",
+            "default": ""
+          },
+          "experience": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Experience",
+            "default": ""
+          },
+          "no_experience": {
+            "type": "boolean",
+            "title": "No Experience",
+            "default": false
+          },
+          "skills": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "Skills",
+            "default": ""
+          },
+          "about": {
+            "type": "string",
+            "maxLength": 4000,
+            "title": "About",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ResumeState"
+      },
+      "TaskDocument": {
+        "properties": {
+          "plan_order": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Plan Order",
+            "default": 0,
+            "readOnly": true
+          },
+          "required_resource": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "app_work",
+                  "app_rental",
+                  "app_help"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Required Resource"
+          },
+          "material_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Material Ids"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/MaterialLink"
+            },
+            "type": "array",
+            "title": "Links"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "goal_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goal Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ],
+            "title": "Status"
+          },
+          "due_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due At"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
+          },
+          "timezone_confirmed": {
+            "type": "boolean",
+            "title": "Timezone Confirmed"
+          },
+          "remind_before_minutes": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  60
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remind Before Minutes"
+          },
+          "notification_override_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notification Override At"
+          },
+          "notify_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notify At"
+          },
+          "schedule_generation": {
+            "type": "integer",
+            "title": "Schedule Generation"
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version"
+          },
+          "completed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Completed At"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "goal_id",
+          "title",
+          "status",
+          "due_at",
+          "timezone",
+          "timezone_confirmed",
+          "remind_before_minutes",
+          "notification_override_at",
+          "notify_at",
+          "schedule_generation",
+          "version",
+          "completed_at",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "TaskDocument"
+      },
+      "TaskLinksResponse": {
+        "properties": {
+          "task_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Task Url"
+          },
+          "plan_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Plan Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_url",
+          "plan_url"
+        ],
+        "title": "TaskLinksResponse"
+      },
+      "TaskPage": {
+        "properties": {
+          "tasks": {
+            "items": {
+              "$ref": "#/components/schemas/TaskDocument"
+            },
+            "type": "array",
+            "title": "Tasks"
+          },
+          "next_after": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next After"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time",
+            "title": "As Of"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tasks",
+          "next_after",
+          "as_of"
+        ],
+        "title": "TaskPage"
+      },
+      "TaskResponse": {
+        "properties": {
+          "task": {
+            "$ref": "#/components/schemas/TaskDocument"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task"
+        ],
+        "title": "TaskResponse"
+      },
+      "TimezonesResponse": {
+        "properties": {
+          "timezones": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Timezones"
+          }
+        },
+        "type": "object",
+        "required": [
+          "timezones"
+        ],
+        "title": "TimezonesResponse"
+      },
+      "UpdateGoal": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 1,
+            "title": "Title"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version",
+          "title"
+        ],
+        "title": "UpdateGoal"
+      },
+      "UpdateTask": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Expected Version"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 240,
+            "minLength": 1,
+            "title": "Title"
+          },
+          "goal_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goal Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "done"
+            ],
+            "title": "Status"
+          },
+          "due_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due At"
+          },
+          "due_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Due Date"
+          },
+          "timezone": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timezone"
+          },
+          "timezone_confirmed": {
+            "type": "boolean",
+            "title": "Timezone Confirmed",
+            "default": false
+          },
+          "remind_before_minutes": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  0,
+                  60
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remind Before Minutes"
+          },
+          "notification_override_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notification Override At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "expected_version"
+        ],
+        "title": "UpdateTask"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "detail"
+        ],
+        "properties": {
+          "detail": {}
+        }
+      },
+      "Place": {
+        "type": "object",
+        "required": [
+          "name",
+          "code"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          }
+        }
+      },
+      "HelpPoint": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "city",
+          "categories",
+          "availability"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "region_code": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "target_group": {
+            "type": "string"
+          },
+          "conditions": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "contact_required"
+            ]
+          },
+          "cost_status": {
+            "type": "string"
+          }
+        }
+      },
+      "Card": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "favorite_id": {
+            "type": "string"
+          },
+          "node_id": {
+            "type": "string"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "saved_at": {
+            "type": "string"
+          },
+          "unavailable": {
+            "type": "boolean"
+          }
+        }
+      },
+      "View": {
+        "type": "object",
+        "required": [
+          "section",
+          "cards",
+          "notices",
+          "controls",
+          "summary"
+        ],
+        "properties": {
+          "section": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "cards": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Card"
+            }
+          },
+          "notices": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "controls": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "MaxSession": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Токен из POST /api/session с подписанным MAX init_data. До 1 часа бездействия; сохраняется в PostgreSQL при перезапуске и отзывается при удалении аккаунта. Пароль MAX и токен бота не передаются."
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://135-106-229-210.sslip.io"
+    }
+  ]
+}

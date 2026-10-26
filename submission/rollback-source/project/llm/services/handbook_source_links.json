@@ -1,0 +1,699 @@
+{
+  "version": 1,
+  "reviewed": "2026-10-19",
+  "notes": [
+    "Navigation additions only; publication text/tasks/status unchanged.",
+    "Use primary official sources for procedures; hh.ru explicitly labeled editorial.",
+    "Availability observations separate from technical safety and correspondence; no blanket legal-currentness assertion."
+  ],
+  "sources": {
+    "mintrud_contract": {
+      "url": "https://mintrud.gov.ru/ministry/programms/trudotn/dogovor",
+      "kind": "official_explanation",
+      "evidence": "Минтруд: Заключение трудового договора, documents and age sections, updated07.03.2025",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "sfr_snils": {
+      "url": "https://sfr.gov.ru/grazhdanam/personificirovannyj_uchet/registraciya_i_oformlenie_snils/",
+      "kind": "official_explanation",
+      "evidence": "СФР: регистрация/уведомлениеАДИ-РЕГ/получениечерезработодателя",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "hh_resume": {
+      "url": "https://hh.ru/article/32171",
+      "kind": "editorial_guide",
+      "evidence": "hh.ru: Как составить эффективное резюме, если нет опыта работы;17.03.2025",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "hh_cover": {
+      "url": "https://hh.ru/article/21395",
+      "kind": "editorial_guide",
+      "evidence": "hh.ru: Сопроводительное письмо: полезные советы и нюансы",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "hh_portfolio": {
+      "url": "https://hh.ru/article/31851",
+      "kind": "editorial_guide",
+      "evidence": "hh.ru: Когда мало опыта: оформляем резюме и портфолио",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "hh_career": {
+      "url": "https://hh.ru/article/32799",
+      "kind": "editorial_guide",
+      "evidence": "hh.ru: Как правильно выбрать будущую профессию, interests/testing/practical exploration",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "study_debts": {
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_140174/85124c9196d691bcb8ae879146b0a2b60abef3f9/",
+      "kind": "legal_reference",
+      "evidence": "273-ФЗст58, displayed редакция04.08.2026 effective01.09.2026, intermediate assessment/resits",
+      "checked": "2026-10-19",
+      "availability": "CONTENT_READ",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "transfer_uni": {
+      "url": "https://publication.pravo.gov.ru/Document/View/0001202109030038",
+      "kind": "official_publication",
+      "evidence": "Минобрнауки607от12.07.2021, published03.09.2021; corroborated bibliography, universityscope",
+      "checked": "2026-10-19",
+      "availability": "FETCH_TIMEOUT_METADATA_ONLY",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "transfer_college": {
+      "url": "https://publication.pravo.gov.ru/Document/View/0001202109030037",
+      "kind": "official_publication",
+      "evidence": "Минпросвещения533от06.08.2021, published03.09.2021; collegeScope, bibliography confirmed",
+      "checked": "2026-10-19",
+      "availability": "NOT_FETCHED_METADATA_ONLY",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "school_lessons": {
+      "url": "https://resh.edu.ru/",
+      "kind": "official_service",
+      "evidence": "Минпросвещенияedu.gov.ru/press/2209 confirms official lesson portal; schoolsubjects only",
+      "checked": "2026-10-19",
+      "availability": "FETCH_TIMEOUT_OFFICIAL_REFERRAL",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "article65": {
+      "url": "https://www.consultant.ru/document/cons_doc_LAW_34683/b618fae23b33471d3e7e3e373dd93fcced4356b8/",
+      "kind": "legal_reference",
+      "evidence": "Existing publication editorial_sources exactURL; actual art65 text matched employmenttopic",
+      "checked": "2026-10-19",
+      "availability": "EXISTING_PUBLISHED_INDEXED_CONTENT",
+      "technical": "safe_https",
+      "claim_relation": "linked guide/document matches named topic; no new legal conclusions",
+      "currentness": "not blanket certification of current law"
+    },
+    "snils_document": {
+      "url": "https://www.gosuslugi.ru/620104/1/form",
+      "kind": "official_service",
+      "evidence": "Direct referral link90 on official SFR registration page; web open returned Госуслуги shell",
+      "checked": "2026-10-19",
+      "availability": "HTML_SHELL_AUTH_REQUIRED_BODY_NOT_VERIFIED",
+      "technical": "safe_https",
+      "claim_relation": "SFR explicitly links this service for registration confirmation",
+      "currentness": "not blanket certification of current law"
+    }
+  },
+  "cards": {
+    "documents": {
+      "fingerprint": "cef0ea96f7643c6ac91be674fd426d6ab8b3956a18dfe3050acd626d1341c367",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        },
+        {
+          "label": "СНИЛС: получить подтверждение",
+          "description": "Как получить документ с номером СНИЛС, если он нужен.",
+          "anchors": [
+            "СНИЛС",
+            "подтверждение регистрации в системе индивидуального учёта",
+            "подтверждение регистрации в системе индивидуального учета",
+            "системе индивидуального учёта",
+            "системе индивидуального учета"
+          ],
+          "target": "doc_snils_proof"
+        },
+        {
+          "label": "ИНН: узнать свой номер",
+          "description": "Сервис и порядок проверки ИНН; это не делает его обязательным документом для каждой работы.",
+          "anchors": [
+            "ИНН"
+          ],
+          "target": "doc_inn_lookup"
+        }
+      ]
+    },
+    "exit_docs": {
+      "fingerprint": "80333d084de6443adc6fb21acbf0411a5c3c96d07decf61d3d63055ea6b293e9",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        },
+        {
+          "label": "СНИЛС: получить подтверждение",
+          "description": "Как получить документ с номером СНИЛС, если он нужен.",
+          "anchors": [
+            "СНИЛС",
+            "подтверждение регистрации в системе индивидуального учёта",
+            "подтверждение регистрации в системе индивидуального учета",
+            "системе индивидуального учёта",
+            "системе индивидуального учета"
+          ],
+          "target": "doc_snils_proof"
+        },
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "education_document": {
+      "fingerprint": "696f0f55491710046cd9a937deee42eae9790c9c8807b34ebf9348d2ae4d6aa0",
+      "links": [
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "resume": {
+      "fingerprint": "b87f3d29fc25f92722180e7cb911397fd4e896699b261c334055e46c8fe1c19c",
+      "links": [
+        {
+          "label": "Резюме без опыта",
+          "description": "Как описать образование, практику и навыки.",
+          "anchors": [
+            "резюме"
+          ],
+          "target": "resume_first"
+        }
+      ]
+    },
+    "hq_state_housing_right": {
+      "fingerprint": "35d02b0cc46510571223858f5f8c7d54e399ccb32aabdbf51353c47208f8293a",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "hq_state_housing_apply": {
+      "fingerprint": "bc47490aa56ed122908da2346201085f29e4c54e892ce938a2f01a97c3d469ca",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "hq_state_housing_support": {
+      "fingerprint": "fdd1b0596f1ef7c78b5bc837b32aefb42fa87799525fa903973313111be6fb88",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "hq_rent_view": {
+      "fingerprint": "0b5248e41bb105758049ced029f261cbbf53f0d6d54f60e2e89bca9b05f58ea9",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "hq_rent_in": {
+      "fingerprint": "e33acc2f3f966ba64d8cde5b843a493fd6f892c096e99adb3b8d381a84c2affc",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "doc_passport_q3": {
+      "fingerprint": "2b3309e3be95516ba5fcff01f83ddcec26d770d3a05fd2e7581ab39eea87de63",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "doc_birth_q3": {
+      "fingerprint": "8f1adab4cde489b3e43fcc0e18293cdad600f6f04e4103b9b9a3efe156ac6b8b",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "university": {
+      "fingerprint": "283f47cde905bed72c6fc190f1a212d6990d3450f5a08c84e80f94c0026826cf",
+      "links": [
+        {
+          "label": "СНИЛС: получить подтверждение",
+          "description": "Как получить документ с номером СНИЛС, если он нужен.",
+          "anchors": [
+            "СНИЛС",
+            "подтверждение регистрации в системе индивидуального учёта",
+            "подтверждение регистрации в системе индивидуального учета",
+            "системе индивидуального учёта",
+            "системе индивидуального учета"
+          ],
+          "target": "doc_snils_proof"
+        },
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "doc_edu_school": {
+      "fingerprint": "38a81d36debb0cc9bd221213d5178c9a8fe1e35bcc8a987603f127095a44b1b2",
+      "links": [
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "doc_edu_college": {
+      "fingerprint": "d9fb1b904647b44dca47f5f1afca67f2b00dad1fa054fc5dcd1cc2344b486cbd",
+      "links": [
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "doc_edu_university": {
+      "fingerprint": "732a5e68062e53ac379a3fa0b58ebc60fd9a467eb3278f8b34849c00f0f75267",
+      "links": [
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "career_interests": {
+      "fingerprint": "d771088fcdc19be4cda05db84b7ac14be58e0e702f51d5afc65f7cb39d6d83f0",
+      "links": [
+        {
+          "label": "hh.ru: как выбрать профессию",
+          "description": "Советы об интересах, выборе профессии и том, как использовать результаты тестов.",
+          "anchors": [],
+          "source": "hh_career"
+        }
+      ]
+    },
+    "career_test": {
+      "fingerprint": "f1741e6fb5d7fdc5c823f0765429844c4f7d59af42cfb43cf267086aeb0491dc",
+      "links": [
+        {
+          "label": "hh.ru: как выбрать профессию",
+          "description": "Советы об интересах, выборе профессии и том, как использовать результаты тестов.",
+          "anchors": [],
+          "source": "hh_career"
+        }
+      ]
+    },
+    "career_info": {
+      "fingerprint": "aa1d88fac644db36b51f3c133f12caff77b23b912885ca3c5bcd751d056eabf9",
+      "links": [
+        {
+          "label": "hh.ru: как выбрать профессию",
+          "description": "Советы об интересах, выборе профессии и том, как использовать результаты тестов.",
+          "anchors": [],
+          "source": "hh_career"
+        }
+      ]
+    },
+    "career_try": {
+      "fingerprint": "ba6e0f19e4919115f447cdbb2128c45aa86e689dcfa78c2e40242d5b0f0a4567",
+      "links": [
+        {
+          "label": "hh.ru: как выбрать профессию",
+          "description": "Советы об интересах, выборе профессии и том, как использовать результаты тестов.",
+          "anchors": [],
+          "source": "hh_career"
+        }
+      ]
+    },
+    "study_subject": {
+      "fingerprint": "d9ff5bf7c8b6e186d27d3561ef32d26fc3b4635d54bde0b78bdd6c8f9270ab80",
+      "links": [
+        {
+          "label": "Российская электронная школа: уроки по школьным темам",
+          "description": "Материалы для школьных предметов; для предметов колледжа или вуза обратись к преподавателю.",
+          "anchors": [],
+          "source": "school_lessons"
+        }
+      ]
+    },
+    "study_debts": {
+      "fingerprint": "5fafb1665a13c825a3ac31982cfe1625ce6115f559ebc019959cd1455187a5e2",
+      "links": [
+        {
+          "label": "273-ФЗ, статья 58 — пересдачи и учебные долги",
+          "description": "Условия промежуточной аттестации; конкретные даты уточни в своём учебном заведении.",
+          "anchors": [
+            "академическая задолженность",
+            "правила пересдачи"
+          ],
+          "source": "study_debts"
+        }
+      ]
+    },
+    "study_transfer": {
+      "fingerprint": "93e286a8b55b9af71e3ac8c74b3eb48b309e2db64f0a7de523089d44a4fd4f35",
+      "links": [
+        {
+          "label": "Перевод в другой вуз — приказ № 607",
+          "description": "Официальная публикация порядка перевода для высшего образования.",
+          "anchors": [],
+          "source": "transfer_uni"
+        },
+        {
+          "label": "Перевод в другой колледж — приказ № 533",
+          "description": "Официальная публикация порядка перевода для среднего профессионального образования.",
+          "anchors": [],
+          "source": "transfer_college"
+        }
+      ]
+    },
+    "employment_docs": {
+      "fingerprint": "8b24a4d87a277eecde9d78d08d124376b6e474c2d269d182cc24c82fdcfdbdc2",
+      "links": [
+        {
+          "label": "Минтруд: какие документы нужны для работы",
+          "description": "Официальное разъяснение об оформлении и документах; требования зависят от ситуации.",
+          "anchors": [],
+          "source": "mintrud_contract"
+        },
+        {
+          "label": "Статья 65 ТК РФ — документы при приёме на работу",
+          "description": "Текст статьи: какие документы предъявляют и в каких случаях.",
+          "anchors": [
+            "По статье 65 ТК РФ",
+            "статья 65 ТК РФ"
+          ],
+          "source": "article65"
+        },
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        },
+        {
+          "label": "СНИЛС: получить подтверждение",
+          "description": "Как получить документ с номером СНИЛС, если он нужен.",
+          "anchors": [
+            "СНИЛС",
+            "подтверждение регистрации в системе индивидуального учёта",
+            "подтверждение регистрации в системе индивидуального учета",
+            "системе индивидуального учёта",
+            "системе индивидуального учета"
+          ],
+          "target": "doc_snils_proof"
+        },
+        {
+          "label": "ИНН: узнать свой номер",
+          "description": "Сервис и порядок проверки ИНН; это не делает его обязательным документом для каждой работы.",
+          "anchors": [
+            "ИНН"
+          ],
+          "target": "doc_inn_lookup"
+        },
+        {
+          "label": "Восстановить документ об образовании",
+          "description": "Выбери аттестат, диплом колледжа или диплом вуза.",
+          "anchors": [
+            "документ об образовании",
+            "документы об образовании"
+          ],
+          "target": "doc_edu_duplicate"
+        }
+      ]
+    },
+    "job_contract": {
+      "fingerprint": "d1e171d4bfab508bbea5badfdf88a4d17a0b99f49d396333001c5dca095f4116",
+      "links": [
+        {
+          "label": "Минтруд: заключение трудового договора",
+          "description": "Как оформляют договор и какие условия важно проверить.",
+          "anchors": [
+            "Трудовой договор",
+            "договора"
+          ],
+          "source": "mintrud_contract"
+        }
+      ]
+    },
+    "job_minor": {
+      "fingerprint": "baab7e4d3d300a2843e75bc4771a9516dd4c27ea2fc222b13852ff675f39b8a5",
+      "links": [
+        {
+          "label": "Минтруд: возраст и условия приёма на работу",
+          "description": "Раздел о возрасте, согласиях и оформлении трудового договора.",
+          "anchors": [
+            "возрастные ограничения"
+          ],
+          "source": "mintrud_contract"
+        }
+      ]
+    },
+    "job_study": {
+      "fingerprint": "463871b931df9a6b9ece44a599518ad301e332d35a3cfcb4d0a6f0b169a7fb33",
+      "links": [
+        {
+          "label": "Минтруд: оформление работы во время учёбы",
+          "description": "Оформление договора и возрастные условия; учебный график уточни отдельно.",
+          "anchors": [],
+          "source": "mintrud_contract"
+        }
+      ]
+    },
+    "resume_first": {
+      "fingerprint": "e1066b9ffcb3e6259b9d6e8bbeed881c0b7f767f7dadd7b18beeb7ac78abdddd",
+      "links": [
+        {
+          "label": "hh.ru: резюме без опыта",
+          "description": "Советы о том, как описать образование, учебные проекты и навыки.",
+          "anchors": [
+            "Резюме без опыта"
+          ],
+          "source": "hh_resume"
+        }
+      ]
+    },
+    "cover_letter": {
+      "fingerprint": "04f7a4cc2fb0f4cee07f457c7d26c169a6e4679fa59edcceb110c70b65df69eb",
+      "links": [
+        {
+          "label": "hh.ru: сопроводительное письмо",
+          "description": "Структура письма, примеры и советы к отклику на вакансию.",
+          "anchors": [
+            "Сопроводительное письмо"
+          ],
+          "source": "hh_cover"
+        }
+      ]
+    },
+    "portfolio": {
+      "fingerprint": "5187d8392c06c8540fb1d9be35ae3376e219397c12ad979322b8640ba945439c",
+      "links": [
+        {
+          "label": "hh.ru: учебные работы в портфолио",
+          "description": "Как показать свои проекты и вклад, когда опыта пока немного.",
+          "anchors": [
+            "Примеры работ"
+          ],
+          "source": "hh_portfolio"
+        }
+      ]
+    },
+    "doc_passport_q1": {
+      "fingerprint": "728acee4e7cae61a51e487c86a1faf004279480ad9a8eec4b6466bdd371d93b4",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "doc_passport_q2": {
+      "fingerprint": "c1107ef5dda142fde55b989d6bcb150a1d2e6c8beab126a0fff8e2b8b69ec15a",
+      "links": [
+        {
+          "label": "Паспорт: оформление и восстановление",
+          "description": "Выбери, нужен ли первый паспорт, замена или восстановление.",
+          "anchors": [
+            "паспорт",
+            "паспорта",
+            "паспортом"
+          ],
+          "target": "doc_passport"
+        }
+      ]
+    },
+    "doc_snils_lookup": {
+      "fingerprint": "78e392671ad68f606bed276a9d60fd271a1849bd4f340682f3a93b95d3e49a4a",
+      "links": [
+        {
+          "label": "СНИЛС: получить подтверждение",
+          "description": "Как получить документ с номером СНИЛС, если он нужен.",
+          "anchors": [
+            "СНИЛС",
+            "подтверждение регистрации в системе индивидуального учёта",
+            "подтверждение регистрации в системе индивидуального учета",
+            "системе индивидуального учёта",
+            "системе индивидуального учета"
+          ],
+          "target": "doc_snils_proof"
+        }
+      ]
+    },
+    "doc_inn_proof": {
+      "fingerprint": "3e9d4e9e101d59e070670badd8d4eaec42bd7212432c808ba367705bf954aebc",
+      "links": [
+        {
+          "label": "ИНН: узнать свой номер",
+          "description": "Сервис и порядок проверки ИНН; это не делает его обязательным документом для каждой работы.",
+          "anchors": [
+            "ИНН"
+          ],
+          "target": "doc_inn_lookup"
+        }
+      ]
+    },
+    "doc_snils_proof": {
+      "fingerprint": "5ad075d2977f7d783ae2efd64fd500ae9a86e5c2d55f262e83dd7f76c7cbb9ff",
+      "links": [
+        {
+          "label": "Госуслуги: получить документ с номером СНИЛС",
+          "description": "Сервис по ссылке СФР; для заявления потребуется вход в Госуслуги.",
+          "source": "snils_document",
+          "anchors": [
+            "Получить подтверждение СНИЛС"
+          ]
+        }
+      ]
+    }
+  }
+}
